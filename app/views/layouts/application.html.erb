@@ -11,13 +11,14 @@
   </head>
 
   <body>
-    <%= yield %>
-    <% if notice %>
-      <p class="notice"><%= notice %></p>
-    <% end %>
+     <%= link_to "Skip to main content", "#main-content", class: "visually-hidden-focusable" %>
+    <header>
+      <%= render "shared/navbar" %> <!-- 👈 Add this for navbar -->
+    </header>
 
-    <% if alert %>
-      <p class="alert"><%= alert %></p>
-    <% end %>
+    <main id="main-content">
+      <%= yield %>
+    </main>
+    <%= render "shared/flashes" %>
   </body>
 </html>
