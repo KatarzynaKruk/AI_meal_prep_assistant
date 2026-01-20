@@ -7,3 +7,22 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+user = User.new(
+  email: "email@hotmail.com",
+  password: "123456"
+)
+
+user.save!
+
+profile_information = ProfileInformation.new(
+  user: user,
+  name: "Kasia",
+  height: 123,
+  weight: 23.6,
+  restrictions: "should not eat nuts",
+  conditions: "diabetes",
+  date_of_birth: "1988-01-01"
+)
+
+profile_information.save!
