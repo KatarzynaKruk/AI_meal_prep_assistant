@@ -14,3 +14,6 @@
     <%= f.input :additional_preferences, placeholder: "Any other considerations while we make your plan?" %>
     <% :system_prompt = @system_prompt %>
     <%= f.submit %>
+
+  <% @system_prompt = "You are a experienced nutritionist helping me with meal planning.
+  I am a #{@profile_information.} "%>

@@ -11,6 +11,8 @@ class MealPlansController < ApplicationController
   end
 
   def create
+    @profile_information = current_user.profile_information
+  
     @meal_plan = MealPlan.new(meal_plan_params)
     if @meal_plan.save!
       redirect_to meal_plans(current_user)
