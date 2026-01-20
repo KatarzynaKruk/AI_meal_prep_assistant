@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
 resources :users, only: [:show] do
   resources :profile_information, only: [:create, :edit, :update]
-  resources :meal_plans, only: [:create, :index, :show] do
+  resources :meal_plans, only: [:new, :create, :index, :show] do
     resource :chat, only: [:show] do
       resources :messages, only: [:create]
     end

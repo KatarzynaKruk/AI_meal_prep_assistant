@@ -1,0 +1,16 @@
+ <%# :plan_title,
+      :goal,
+      :additional_preferences,
+      :system_prompt,
+      :diet,
+      :meals_required %>
+
+<%= simple_form_for(@user, @meal_plan) do |f| %>
+    <%= f.label :name, "Meal Plan name" %>
+    <%= f.input :name %>
+    <%= f.input :diet, placeholder: "What type of diet do you follow? e.g. Vegetarian, pescatarian, no specific diet etc." %>
+    <%= f.input :goal, placeholder: "What is your goal?" %>
+    <%= f.input :meals_required, placeholder: "How many meals do you want this week?  e.g. All days except Wednesday, breakfast, lunch and dinner" %>
+    <%= f.input :additional_preferences, placeholder: "Any other considerations while we make your plan?" %>
+    <% :system_prompt = @system_prompt %>
+    <%= f.submit %>
