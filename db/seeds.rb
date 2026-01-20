@@ -23,6 +23,8 @@
 
 user = User.new(
   email: "email@email.com",
+user = User.new(
+  email: "email@hotmail.com",
   password: "123456"
 )
 
@@ -39,3 +41,14 @@ meal_plan = MealPlan.new(
 )
 
 meal_plan.save!
+profile_information = ProfileInformation.new(
+  user: user,
+  name: "Kasia",
+  height: 123,
+  weight: 23.6,
+  restrictions: "should not eat nuts",
+  conditions: "diabetes",
+  date_of_birth: "1988-01-01"
+)
+
+profile_information.save!
