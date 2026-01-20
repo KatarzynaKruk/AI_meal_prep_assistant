@@ -7,3 +7,48 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+# create_table "meal_plans", force: :cascade do |t|
+#     t.string "plan_title"
+#     t.string "goal"
+#     t.string "additional_preferences"
+#     t.string "system_prompt"
+#     t.string "diet"
+#     t.string "meals_required"
+#     t.bigint "user_id", null: false
+#     t.datetime "created_at", null: false
+#     t.datetime "updated_at", null: false
+#     t.index ["user_id"], name: "index_meal_plans_on_user_id"
+#   end
+
+user = User.new(
+  email: "email@email.com",
+user = User.new(
+  email: "email@hotmail.com",
+  password: "123456"
+)
+
+user.save!
+
+meal_plan = MealPlan.new(
+  user: user,
+  plan_title: "Melissa's plan",
+  goal: "more muscle",
+  additional_preferences: "no eggs",
+  system_prompt: "placeholder",
+  meals_required: "no breakfast, 5 days per week lunch and dinner",
+  diet: "omni"
+)
+
+meal_plan.save!
+profile_information = ProfileInformation.new(
+  user: user,
+  name: "Kasia",
+  height: 123,
+  weight: 23.6,
+  restrictions: "should not eat nuts",
+  conditions: "diabetes",
+  date_of_birth: "1988-01-01"
+)
+
+profile_information.save!
