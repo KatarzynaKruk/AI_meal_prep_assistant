@@ -1,11 +1,20 @@
-<%= form_with model: @task do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <%= f.label :details %>
-  <%= f.text_field :details %>
+<%= form_with model: @profile_information do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :height %>
+  <%= f.text_field :height %>
+  <%= f.label :weight %>
+  <%= f.text_field :weight %>
+  <%= f.label :date_of_birth %>
+  <%= f.text_field :date_of_birth %>
+  <%= f.label :gender %>
+  <%= f.text_field :gender %>
+  <%= f.label :restrictions %>
+  <%= f.text_field :restrictions %>
+  <%= f.label :conditions %>
+  <%= f.text_field :conditions %>
   <%= f.submit %>
 <% end %>
 
-<%= link_to "Back to task", task_path(@task) %>
 <br>
-<%= link_to "Back to home page", tasks_path %>
+<%# <%= link_to "Back to home page", meal_plans_path(current_user) %> 
