@@ -13,6 +13,7 @@ class ProfileInformationsController < ApplicationController
 
   # GET /users/:user_id/profile_information/:id/edit
   def edit
+    @profile_information = current_user.profile_information
   end
 
   # PATCH /users/:user_id/profile_information/:id

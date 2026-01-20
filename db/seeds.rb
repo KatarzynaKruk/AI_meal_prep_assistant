@@ -42,13 +42,14 @@ meal_plan = MealPlan.new(
 
 meal_plan.save!
 profile_information = ProfileInformation.new(
-  user: user,
+  user: User.last,
   name: "Kasia",
   height: 123,
   weight: 23.6,
   restrictions: "should not eat nuts",
   conditions: "diabetes",
-  date_of_birth: "1988-01-01"
+  date_of_birth: "1988-01-01",
+  gender: "female"
 )
 
 profile_information.save!
