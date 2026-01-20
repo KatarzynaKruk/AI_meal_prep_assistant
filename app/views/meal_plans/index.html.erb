@@ -1,0 +1,6 @@
+<h1><%= current_user.email %>'s meal plans</h1>
+<ul>
+<% @meal_plans.each do |plan| %>
+<li><%= plan.plan_title %></li>
+<% end %>
+</ul>
