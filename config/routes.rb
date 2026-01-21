@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   #
+resolve("ProfileInformation") { [:profile_information] }
 
 resources :users, only: [:show] do
   resource :profile_information, only: [:new, :create, :edit, :update]
