@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   #
 
 resources :users, only: [:show] do
-  resource :profile_informations, only: [:create, :edit, :update]
+  resource :profile_information, only: [:create, :edit, :update]
   resources :meal_plans, only: [:new, :create, :index, :show] do
     resource :chat, only: [:show] do
       resources :messages, only: [:create]

@@ -1,20 +1,35 @@
-<%= form_with model: @profile_information do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :height %>
-  <%= f.text_field :height %>
-  <%= f.label :weight %>
-  <%= f.text_field :weight %>
-  <%= f.label :date_of_birth %>
-  <%= f.text_field :date_of_birth %>
-  <%= f.label :gender %>
-  <%= f.text_field :gender %>
-  <%= f.label :restrictions %>
-  <%= f.text_field :restrictions %>
-  <%= f.label :conditions %>
-  <%= f.text_field :conditions %>
-  <%= f.submit %>
-<% end %>
+<h1>Your Profile Information</h1>
 
-<br>
-<%# <%= link_to "Back to home page", meal_plans_path(current_user) %> 
+<div id="profile-preview">
+  <h2>Profile Preview</h2>
+  <p><strong>Name:</strong> <%= @profile_information.name %></p>
+  <p><strong>Height:</strong> <%= @profile_information.height %> cm</p>
+  <p><strong>Weight:</strong> <%= @profile_information.weight %> kg</p>
+  <p><strong>Date of Birth:</strong> <%= @profile_information.date_of_birth %></p>
+  <p><strong>Gender:</strong> <%= @profile_information.gender%></p>
+  <p><strong>Restrictions:</strong> <%= @profile_information.restrictions %></p>
+  <p><strong>Conditions:</strong> <%= @profile_information.conditions %></p>
+</div>
+
+
+<h2>Update Your Profile Information</h2>
+<%# <%= form_with model: @profile_information do |f| %>
+  <%# <%= f.label :name %>
+  <%# <%= f.text_field :name %>
+  <%# <%= f.label :height %>
+  <%# <%= f.text_field :height %>
+  <%# <%= f.label :weight %>
+  <%# <%= f.text_field :weight %>
+  <%# <%= f.label :date_of_birth %>
+  <%# <%= f.text_field :date_of_birth %>
+  <%# <%= f.label :gender %>
+  <%# <%= f.text_field :gender %>
+  <%# <%= f.label :restrictions %>
+  <%# <%= f.text_field :restrictions %>
+  <%# <%= f.label :conditions %>
+  <%# <%= f.text_field :conditions %>
+  <%# <%= f.submit %>
+<%# <% end %> 
+
+<%# <br> %>
+<%# <%= link_to "Back to home page", meal_plans_path(current_user) %>
