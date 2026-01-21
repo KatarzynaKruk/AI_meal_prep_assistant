@@ -4,6 +4,7 @@ class MealPlansController < ApplicationController
 
   def index
     @meal_plans = @user.meal_plans
+    @profile_information = @user.profile_information
   end
 
   def new

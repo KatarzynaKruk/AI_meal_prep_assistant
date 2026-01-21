@@ -1,10 +1,58 @@
-<h1><%= current_user.email %>'s meal plans</h1>
-
-<p><strong>Profile information goes here</strong></p>
-
-<ul>
-<% @meal_plans.each do |plan| %>
-<li><%= plan.plan_title %></li>
-<% end %>
-</ul>
-<%= link_to "New Meal Plan", new_user_meal_plan_path(current_user) %>
+<div class="container">
+  <div class="banner">
+    <h1><%= current_user.email %>'s meal plans</h1>
+  </div>
+  <div class="profile-information">
+    <p><strong>Profile Information</strong></p>
+    <ul>
+      <li>Name: <%= @profile_information.name %></li>
+      <li>Gender: <%= @profile_information.gender %></li>
+      <li>DOB: <%= @profile_information.date_of_birth %></li>
+      <li>Height: <%= @profile_information.height %></li>
+      <li>Weight: <%= @profile_information.weight %></li>
+      <li>Restrictions: <%= if @profile_information.restrictions.present?
+                @profile_information.restrictions
+              else
+                "None"
+              end%></li>
+      <li>Conditions: <%= if @profile_information.conditions.present?
+                @profile_information.conditions
+              else
+                "None"
+              end%></li>
+    </ul>
+  </div>
+  <ul>
+  <% @meal_plans.each do |plan| %>
+  <div class="plan">
+    <li>
+      <p><strong><%= plan.plan_title %></strong> - Plan goal: <em><%= plan.goal %></em></p>
+      <p>Diet type: <%= plan.diet %></p>
+      <p>Meals required: <%= plan.meals_required %></p>
+      <p>Other considerations: <%= plan.additional_preferences %></p>
+      <p><strong>System Prompt (JUST FOR TESTING PURPOSES - remove when we push to Heroku):</strong> <%= plan.system_prompt %></p>
+    </li>
+  </div>
+  <% end %>
+  </ul>
+  <%= link_to "New Meal Plan", new_user_meal_plan_path(current_user), class: "btn btn-success" %>
+</div>
+<%#
+    t.string "name"
+    t.float "height"
+    t.float "weight"
+    t.string "gender"
+    t.text "restrictions"
+    t.string "conditions"
+    t.date "date_of_birth"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_profile_informations_on_user_id"
+  end %>
+ <%# :plan_title,
+      :goal,
+      :additional_preferences,
+      :system_prompt,
+      :diet,
+      :meals_required %>
