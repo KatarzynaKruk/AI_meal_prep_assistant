@@ -5,15 +5,29 @@
       :diet,
       :meals_required %>
 
-<%= simple_form_for(@user, @meal_plan) do |f| %>
-    <%= f.label :name, "Meal Plan name" %>
-    <%= f.input :name %>
+<%= simple_form_for([@user, @meal_plan]) do |f| %>
+    <%= f.input :plan_title, label: "Meal Plan name" %>
     <%= f.input :diet, placeholder: "What type of diet do you follow? e.g. Vegetarian, pescatarian, no specific diet etc." %>
     <%= f.input :goal, placeholder: "What is your goal?" %>
     <%= f.input :meals_required, placeholder: "How many meals do you want this week?  e.g. All days except Wednesday, breakfast, lunch and dinner" %>
     <%= f.input :additional_preferences, placeholder: "Any other considerations while we make your plan?" %>
-    <% :system_prompt = @system_prompt %>
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-outline-primary mb-2" %>
+<% end %>
 
-  <% @system_prompt = "You are a experienced nutritionist helping me with meal planning.
-  I am a #{@profile_information.} "%>
+<%= link_to "Back to my plans", user_meal_plans_path(@user), class: "btn btn-outline-warning" %>
+<%# should then redirect to  %>
+
+
+<%#
+    t.string "name"
+    t.float "height"
+    t.float "weight"
+    t.string "gender"
+    t.text "restrictions"
+    t.string "conditions"
+    t.date "date_of_birth"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_profile_informations_on_user_id"
+  end %>
