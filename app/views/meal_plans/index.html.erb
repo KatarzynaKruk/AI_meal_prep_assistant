@@ -31,12 +31,13 @@
       <p>Meals required: <%= plan.meals_required %></p>
       <p>Other considerations: <%= plan.additional_preferences %></p>
       <p><strong>System Prompt (JUST FOR TESTING PURPOSES - remove when we push to Heroku):</strong> <%= plan.system_prompt %></p>
+      <%= link_to "Go to Chat", user_meal_plan_chat_path(current_user, plan) %>
     </li>
   </div>
   <% end %>
   </ul>
   <%= link_to "New Meal Plan", new_user_meal_plan_path(current_user), class: "btn btn-success" %>
-  
+
 </div>
 <%#
     t.string "name"

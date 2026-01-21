@@ -1,16 +1,16 @@
 class MessagesController < ApplicationController
-  SYSTEM_PROMPT = "You are a Teaching Assistant.\n\nI am a student at the Le Wagon AI Software Development Bootcamp, learning how to code.\n\nHelp me break down my problem into small, actionable steps, without giving away solutions.\n\nAnswer concisely in Markdown."
-  def index
-    @chats = current_user.chats_includes(:meal_plan, :profile_information)
-  end
+  SYSTEM_PROMPT = current_user.meal_plans.system_prompt
+  # def index
+  #   @chats = current_user.chats.includes(:meal_plan, :profile_information)
+  # end
 
-  def new
-    @chat = Chat.new
-  end
+  # def new
+  #   @chat = Chat.new
+  # end
 
-  def show
-    render @chat, status: :ok
-  end
+  # def show
+  #   render @chat, status: :ok
+  # end
 
   def create
     @chat = current_user.chats.find(params[:chat_id])
