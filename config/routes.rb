@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'users/new'
   get 'profile_informations/new'
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions' }
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   #
 
 resources :users, only: [:show] do
-  resource :profile_information, only: [:create, :edit, :update]
+  resource :profile_information, only: [:new, :create, :edit, :update]
   resources :meal_plans, only: [:new, :create, :index, :show] do
     resource :chat, only: [:show] do
       resources :messages, only: [:create]
