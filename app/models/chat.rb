@@ -6,6 +6,6 @@ class Chat < ApplicationRecord
   has_many :messages
 
   validates :user_id, presence: true
-  valitades :profile_information, presence: true
+  validates :user, :meal_plan, :profile_information, presence: true
   validates :meal_plan, presence: true
 end
