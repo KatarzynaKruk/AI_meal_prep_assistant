@@ -1,4 +1,7 @@
 <h1>Profile Information</h1>
+<div class="home-page-content text-center py-5">
+  <div class="row justify-content-center mb-4">
+    <div class="col-md-4 col-lg-3">
 <%= form_with(model: @profile_information, url: user_profile_information_path(@user)) do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
@@ -16,3 +19,7 @@
   <%= f.text_field :conditions %>
   <%= f.submit %>
 <% end %>
+    </div>
+  </div>
+</div>
+
