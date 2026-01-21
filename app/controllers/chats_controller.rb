@@ -2,7 +2,7 @@ class ChatsController < ApplicationController
   before_action :set_meal_plan
 
   def index
-  @chats = current_user.chats.includes(:meal_plan, :profile_information)
+  @chats = current_user.chats.includes(:meal_plan)
   end
 
   def new
