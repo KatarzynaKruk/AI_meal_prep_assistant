@@ -26,7 +26,8 @@ class MealPlansController < ApplicationController
   end
 
   def show
-    # will depend on chat and messages
+    @meal_plan = MealPlan.find(params[:id])
+    @chats = @meal_plan.chats.where(user: current_user)
   end
 
   def destroy
