@@ -12,8 +12,8 @@ class ChatsController < ApplicationController
     @chat = Chat.new
     @chat.meal_plan = @meal_plan
     @chat.user = current_user
-    @chat.profile_information = current_user.profile_information  #check if we need user or profile?
-    
+    @chat.profile_information_id = current_user.profile_information  #check if we need user or profile?
+
     if @chat.save
       redirect_to chat_path(@chat)
     else

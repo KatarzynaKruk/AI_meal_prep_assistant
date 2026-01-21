@@ -17,8 +17,8 @@ resolve("ProfileInformation") { [:profile_information] }
 resources :users, only: [:show] do
   resource :profile_information, only: [:new, :create, :edit, :update]
   resources :meal_plans, only: [:new, :create, :index, :show] do
-    resource :chat, only: [:show] do
-      resources :messages, only: [:create]
+    resource :chat, only: [:show, :create] do
+      resources :messages, only: [:new, :create]
     end
   end
 end

@@ -31,7 +31,7 @@
       <p>Meals required: <%= plan.meals_required %></p>
       <p>Other considerations: <%= plan.additional_preferences %></p>
       <p><strong>System Prompt (JUST FOR TESTING PURPOSES - remove when we push to Heroku):</strong> <%= plan.system_prompt %></p>
-      <%= link_to "Go to Chat", user_meal_plan_chat_path(current_user, plan) %>
+      <%= button_to "New Chat", user_meal_plan_chat_path(current_user.id, plan) %>
     </li>
   </div>
   <% end %>
