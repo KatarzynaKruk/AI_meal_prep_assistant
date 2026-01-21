@@ -1,6 +1,7 @@
 class ProfileInformationsController < ApplicationController
   before_action :set_user
 
+  # part of the onboarding process
   def create
     @profile_information = @user.profile_information.new(profile_information_params)
 
@@ -20,7 +21,7 @@ class ProfileInformationsController < ApplicationController
   def update
     @profile_informations = current_user.profile_information
     if @profile_information.update(profile_information_params)
-      redirect_to edit_profile_information_path,
+      redirect_to edit_user_profile_information_path,
       notice: "Profile information updated successfully."
     else
       render :edit, status: :unprocessable_entity
