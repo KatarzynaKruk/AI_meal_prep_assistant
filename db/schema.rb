@@ -10,18 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_01_21_125852) do
+ActiveRecord::Schema[7.1].define(version: 2026_01_21_152858) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "chats", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "meal_plan_id", null: false
-    t.bigint "profile_information_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["meal_plan_id"], name: "index_chats_on_meal_plan_id"
-    t.index ["profile_information_id"], name: "index_chats_on_profile_information_id"
     t.index ["user_id"], name: "index_chats_on_user_id"
   end
 
@@ -73,7 +71,6 @@ ActiveRecord::Schema[7.1].define(version: 2026_01_21_125852) do
   end
 
   add_foreign_key "chats", "meal_plans"
-  add_foreign_key "chats", "profile_informations"
   add_foreign_key "chats", "users"
   add_foreign_key "meal_plans", "users"
   add_foreign_key "messages", "chats"

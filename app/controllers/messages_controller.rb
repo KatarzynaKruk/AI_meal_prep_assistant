@@ -1,5 +1,8 @@
 class MessagesController < ApplicationController
-  SYSTEM_PROMPT = current_user.meal_plans.system_prompt
+  before_action :set_user
+  before_action :set_chat
+
+  # SYSTEM_PROMPT = @user.meal_plans.system_prompt
   # def index
   #   @chats = current_user.chats.includes(:meal_plan, :profile_information)
   # end
@@ -13,24 +16,33 @@ class MessagesController < ApplicationController
   # end
 
   def create
-    @chat = current_user.chats.find(params[:chat_id])
-    @meal_plan = @chat.meal_plan
+    # @chat = current_user.chats.find(params[:chat_id])
+    # @meal_plan = @chat.meal_plan
 
     @message = Message.new(message_params)
     @message.chat = @chat
-    @message.role = "user"
-
+    # @message.role = "user"
     if @message.save
       ruby_llm_chat = RubyLLM.chat
-      response = ruby_llm_chat.with_instructions(SYSTEM_PROMPT).ask(@message.content)
-      Message.create(role: "assistant", content: response.content, chat: @chat)
-      redirect_to chat_path(@chat)
+      response = ruby_llm_chat.with_instructions(@meal_plan.system_prompt).ask(@message.content)
+      # Message.create(role: "assistant", content: response.content, chat: @chat)
+      Message.create(content: response.content, chat: @chat)
+      redirect_to user_meal_plan_chat_path(@meal_plan.user, @chat)
     else
       render "chats/show", status: :unprocessable_entity
     end
   end
 
   private
+
+  def set_user
+    @user = current_user
+  end
+
+  def set_chat
+    @meal_plan = MealPlan.find(params[:meal_plan_id])
+    @chat = @meal_plan.chat
+  end
 
   def message_params
     params.require(:message).permit(:content)

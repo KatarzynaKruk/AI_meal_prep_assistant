@@ -62,7 +62,7 @@ class MealPlansController < ApplicationController
       My current weight is #{profile.weight} and my height is #{profile.height}.
       #{plan_restrictions_text}.
       Additionally #{meals_required_text} and #{additional_preferences_text}.
-      Return a concise meal plan and supporting shopping list.  The meal plan should be segregated by days and meals.
+      Return a concise meal plan, recipies with instructions and supporting shopping list.  The meal plan should be segregated by days and meals.
       The shopping list should have clearly marked what recipe each ingredient is intended for and be segregated by common supermarket sections.
       The return should be in markdown format.
       Additionally ask me afterwards if there are any further adjustments to the plan I would like based on the output you provide."
