@@ -1,33 +1,65 @@
- <%# :plan_title,
-      :goal,
-      :additional_preferences,
-      :system_prompt,
-      :diet,
-      :meals_required %>
-
-<%= simple_form_for([@user, @meal_plan]) do |f| %>
-    <%= f.input :plan_title, label: "Meal Plan name" %>
-    <%= f.input :diet, placeholder: "What type of diet do you follow? e.g. Vegetarian, pescatarian, no specific diet etc." %>
-    <%= f.input :goal, placeholder: "What is your goal?" %>
-    <%= f.input :meals_required, placeholder: "How many meals do you want this week?  e.g. All days except Wednesday, breakfast, lunch and dinner" %>
-    <%= f.input :additional_preferences, placeholder: "Any other considerations while we make your plan?" %>
-    <%= f.submit class: "btn btn-outline-primary mb-2" %>
-<% end %>
-
-<%= link_to "Back to my plans", user_meal_plans_path(@user), class: "btn btn-outline-warning" %>
-<%# should then redirect to  %>
-
-
-<%#
-    t.string "name"
-    t.float "height"
-    t.float "weight"
-    t.string "gender"
-    t.text "restrictions"
-    t.string "conditions"
-    t.date "date_of_birth"
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_profile_informations_on_user_id"
-  end %>
+<div class="container py-5">
+  <div class="row">
+    <div class="col-md-10 mx-auto">
+      <div class="card border-0 shadow-sm p-4 meal-plan-card">
+        <h1 class="mb-4">
+          <i class="fas fa-utensils me-2"></i>Create Meal Plan
+        </h1>
+        
+        <div data-controller="form-loader">
+          <%= simple_form_for([@user, @meal_plan], html: { data: { form_loader_target: "form" } }) do |f| %>
+          <div class="form-group-wrapper mb-4">
+            <div class="input-icon-wrapper">
+              <%= f.input :plan_title, label: "Meal Plan name", input_html: { class: "form-control form-control-enhanced" }, required: false, label_html: { class: "form-label-enhanced" } %>
+              <i class="fas fa-tag input-icon"></i>
+            </div>
+          </div>
+          
+          <div class="form-group-wrapper mb-4">
+            <div class="input-icon-wrapper">
+              <%= f.input :diet, placeholder: "What type of diet do you follow? e.g. Vegetarian, pescatarian, no specific diet etc.", input_html: { class: "form-control form-control-enhanced" }, label_html: { class: "form-label-enhanced" } %>
+              <i class="fas fa-leaf input-icon"></i>
+            </div>
+          </div>
+          
+          <div class="form-group-wrapper mb-4">
+            <div class="input-icon-wrapper">
+              <%= f.input :goal, placeholder: "What is your goal? e.g. build muscles, lose weight, etc.", input_html: { class: "form-control form-control-enhanced" }, label_html: { class: "form-label-enhanced" } %>
+              <i class="fas fa-bullseye input-icon"></i>
+            </div>
+          </div>
+          
+          <div class="form-group-wrapper mb-4">
+            <div class="input-icon-wrapper">
+              <%= f.input :meals_required, placeholder: "How many meals do you want this week?  e.g. All days except Wednesday, breakfast, lunch and dinner", input_html: { class: "form-control form-control-enhanced" }, required: false, label_html: { class: "form-label-enhanced" } %>
+              <i class="fas fa-calendar-week input-icon"></i>
+            </div>
+          </div>
+          
+          <div class="form-group-wrapper mb-4">
+            <div class="input-icon-wrapper">
+              <%= f.input :additional_preferences, placeholder: "Any other considerations while we make your plan? e.g. I do not like cucumbers, etc.", input_html: { class: "form-control form-control-enhanced", rows: 4 }, required: false, label_html: { class: "form-label-enhanced" } %>
+              <i class="fas fa-comment-dots input-icon textarea-icon"></i>
+            </div>
+          </div>
+          
+          <div class="d-flex gap-3 mt-5 pt-3 border-top">
+            <%= button_tag type: 'submit', class: "btn-1", data: { form_loader_target: "submitButton" } do %>
+              <span data-form-loader-target="buttonText">
+                <i class="fas fa-plus-circle me-2"></i>Create Meal Plan
+              </span>
+              <span data-form-loader-target="loadingSpinner" class="d-none">
+                <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                Your Meal Plan is being created...
+              </span>
+            <% end %>
+            <%= link_to user_meal_plans_path(@user), class: "btn-2" do %>
+              <i class="fas fa-arrow-left me-2"></i>Back to my plans
+            <% end %>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
