@@ -8,6 +8,10 @@
     border-color: #4f6b5a;
   }
 
+  .footer-container .form-group {
+  margin-bottom: 0.75rem;
+  }
+
   &:focus,
   &:active {
     background-color: #4a6253;
@@ -15,3 +19,13 @@
     box-shadow: 0 0 0 0.2rem rgba(95, 127, 106, 0.4);
   }
 }
+
+  .chat-user-bubble {
+  background-color: #5f7f6a;
+  color: #ffffff;
+  opacity: 1;
+  }
+
+  .chat-user-bubble p {
+  margin-bottom: 0;
+  }
