@@ -1,6 +1,6 @@
 class MealPlan < ApplicationRecord
   belongs_to :user
-  has_one :chat
+  has_one :chat, dependent: :destroy
 
   validates :goal, :system_prompt, :user, :diet, presence: true
   validates :additional_preferences, :meals_required, presence: true, allow_blank: true

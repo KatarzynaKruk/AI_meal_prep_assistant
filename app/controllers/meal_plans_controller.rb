@@ -31,7 +31,9 @@ class MealPlansController < ApplicationController
   end
 
   def destroy
-
+    @meal_plan = current_user.meal_plans.find(params[:id])  # Assumes belongs_to :user
+    @meal_plan.destroy
+    redirect_to user_meal_plans_path(current_user), notice: "Meal plan deleted."
   end
 
   def build_system_prompt(meal_plan, profile)
