@@ -25,10 +25,9 @@ class ChatsController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:user_id])
-    @meal_plan = current_user.meal_plans.find(params[:meal_plan_id])
-    @chat = @meal_plan.chat
-    @message = Message.new
+    @meal_plan = current_user.meal_plans.find(params[:meal_plan_id])  # Or via before_action
+    @chat ||= @meal_plan.chat || @meal_plan.create_chat!(user: current_user)  # Adjust attrs as needed
+    @message = @chat.messages.build
     @messages = @chat.messages.order(:created_at)
   end
 
