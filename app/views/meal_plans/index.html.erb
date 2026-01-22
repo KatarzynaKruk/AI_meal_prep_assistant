@@ -27,31 +27,52 @@
   </div>
 </div>
 <div class="text-center mb-4">
+
+  </div>
+  <div class="meal-plans-title">
+    <h2>Meal Plans</h2>
     <%= link_to "New Meal Plan", new_user_meal_plan_path(current_user), class: "btn btn-success btn-lg" %>
   </div>
+
   <% @meal_plans.each do |plan| %>
     <div class="row mb-4">
       <div class="col-md-10 mx-auto">
         <div class="card border-0 shadow-sm p-4" style="border-radius: 12px; background: #f8f9fa;">
-          <div class="row">
-            <div class="col-8">
-              <h5 class="fw-bold mb-3"><%= plan.plan_title %></h5>
-              <ul class="list-unstyled mb-0">
-                <li class="mb-2"><em>Plan goal:</em> <%= plan.goal %></li>
-                <li class="mb-2"><em>Diet type:</em> <%= plan.diet %></li>
-                <li class="mb-2"><em>Meals required:</em> <%= plan.meals_required %></li>
-                <li class="mb-2"><em>Other considerations:</em> <%= plan.additional_preferences %></li>
-              </ul>
-            </div>
-            <div class="col-4 d-flex flex-column justify-content-start gap-2">
-              <%= button_to "View Meal Plan", user_meal_plan_path(current_user.id, plan), class: "btn btn-primary btn-lg flex-fill", method: :get %>
-              <%= button_to "Edit Meal Plan", user_meal_plan_chat_path(current_user.id, plan), class: "btn btn-primary btn-lg flex-fill", method: :get %>
-              <%= button_to "Delete Meal Plan", user_meal_plan_path(current_user.id, plan), method: :delete, class: "btn btn-outline-danger", data: { confirm: "Delete this meal plan? All chats will be lost." } %>
-            </div>
+
+          <h4 class="fw-bold mb-3"><%= plan.plan_title %></h5>
+          <div class="meal-requirements">
+            <ul class="list-unstyled mb-0 requirements-list">
+              <li class="mb-2">
+                <i class="fa-solid fa-medal meal-icon"></i>
+                <p class="box-title-small"><em>Plan goal</em></p>
+                <p class="box-body-txt"><%= plan.goal %></p>
+              </li>
+              <li class="mb-2">
+                <i class="fa-brands fa-font-awesome meal-icon"></i>
+                <p class="box-title-small"><em>Diet type</em></p>
+                <p class="box-body-txt"><%= plan.diet %></p>
+              </li>
+              <li class="mb-2">
+                <i class="fa-solid fa-utensils meal-icon"></i>
+                <p class="box-title-small"><em>Meals required</em></p>
+                <p class="box-body-txt"><%= plan.meals_required %></p>
+              </li>
+            </ul>
           </div>
+
+          <p>
+            <em>Other considerations:</em>
+            <%= plan.additional_preferences %>
+          </p>
+
+          <div class="view-details-link d-flex justify-content-end">
+            <%= link_to user_meal_plan_chat_path(current_user.id, plan) do %>
+              View <i class="fa-solid fa-chevron-right" style="vertical-align: middle";></i>
+            <% end %>
+          </div>
+
         </div>
       </div>
     </div>
   <% end %>
-
-</div
+</div>
