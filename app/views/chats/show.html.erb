@@ -1,8 +1,8 @@
 <%# <%= link_to "← #{@chat.meal_plan.name}", meal_plan_path(@chat.meal_plan) %>
 
 <h1 id="chat_title">Let's build your new meal plan</h1>
-<div class="row justify-content-between">
-  <div class="summary-info col-auto">
+<div class="row justify-content-center">
+  <div class="summary-info col-auto px-5">
     <h3><strong>Profile Information</strong></h3>
       <% if current_user.profile_information.present? %>
         <ul>
@@ -26,7 +26,7 @@
         <p>No profile information available.</p>
       <% end %>
   </div>
-  <div class="meal-plan-info col-auto">
+  <div class="meal-plan-info col-auto px-5">
     <h3><strong>Meal Plan Preferences</strong></h3>
     <h5 class="fw-bold mb-3"><%= @meal_plan.plan_title %></h5>
               <ul class="list-unstyled mb-0">
