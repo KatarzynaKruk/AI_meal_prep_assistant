@@ -1,7 +1,13 @@
-<nav class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<nav class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top">
   <div class="container-fluid">
-    <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag 'broccoli.png', alt: "Broccoli logo" %>
+    <% if current_user %>
+      <%= link_to user_meal_plans_path(current_user), class: "navbar-brand" do %>
+        <%= image_tag "broccoli.png", alt: "Broccoli logo" %>
+      <% end %>
+    <% else %>
+      <%= link_to root_path, class: "navbar-brand" do %>
+        <%= image_tag "broccoli.png", alt: "Broccoli logo" %>
+      <% end %>
     <% end %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
