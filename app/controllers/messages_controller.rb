@@ -1,36 +1,49 @@
 class MessagesController < ApplicationController
-  SYSTEM_PROMPT = "You are a Teaching Assistant.\n\nI am a student at the Le Wagon AI Software Development Bootcamp, learning how to code.\n\nHelp me break down my problem into small, actionable steps, without giving away solutions.\n\nAnswer concisely in Markdown."
-  def index
-    @chats = current_user.chats_includes(:meal_plan, :profile_information)
-  end
+  before_action :set_user
+  before_action :set_chat
 
-  def new
-    @chat = Chat.new
-  end
+  # SYSTEM_PROMPT = @user.meal_plans.system_prompt
+  # def index
+  #   @chats = current_user.chats.includes(:meal_plan, :profile_information)
+  # end
 
-  def show
-    render @chat, status: :ok
-  end
+  # def new
+  #   @chat = Chat.new
+  # end
+
+  # def show
+  #   render @chat, status: :ok
+  # end
 
   def create
-    @chat = current_user.chats.find(params[:chat_id])
-    @meal_plan = @chat.meal_plan
+    # @chat = current_user.chats.find(params[:chat_id])
+    # @meal_plan = @chat.meal_plan
 
     @message = Message.new(message_params)
     @message.chat = @chat
     @message.role = "user"
-
     if @message.save
       ruby_llm_chat = RubyLLM.chat
-      response = ruby_llm_chat.with_instructions(SYSTEM_PROMPT).ask(@message.content)
+      response = ruby_llm_chat.with_instructions(@meal_plan.system_prompt).ask(@message.content)
       Message.create(role: "assistant", content: response.content, chat: @chat)
-      redirect_to chat_path(@chat)
+      # Message.create(content: response.content, chat: @chat)
+      redirect_to user_meal_plan_chat_path(@meal_plan.user, @chat)
     else
       render "chats/show", status: :unprocessable_entity
     end
   end
 
   private
+
+  def set_user
+    @user = current_user
+  end
+
+  def set_chat
+    @meal_plan = MealPlan.find(params[:meal_plan_id])
+    @chat = @meal_plan.chat || @meal_plan.build_chat
+    @chat.save! if @chat.new_record?
+  end
 
   def message_params
     params.require(:message).permit(:content)
