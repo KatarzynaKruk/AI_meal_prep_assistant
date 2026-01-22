@@ -1,53 +1,69 @@
 <%# <%= link_to "← #{@chat.meal_plan.name}", meal_plan_path(@chat.meal_plan) %>
 
 <h1 id="chat_title">Let's build your new meal plan</h1>
+<div class="row justify-content-between">
+  <div class="summary-info col-auto">
+    <h3><strong>Profile Information</strong></h3>
+      <% if current_user.profile_information.present? %>
+        <ul>
+          <li>Name: <%= current_user.profile_information.name %></li>
+          <li>Gender: <%= current_user.profile_information.gender %></li>
+          <li>DOB: <%= current_user.profile_information.date_of_birth %></li>
+          <li>Height: <%= current_user.profile_information.height %></li>
+          <li>Weight: <%= current_user.profile_information.weight %></li>
+          <li>Restrictions: <%= if current_user.profile_information.restrictions.present?
+                    current_user.profile_information.restrictions
+                  else
+                    "None"
+                  end %></li>
+          <li>Conditions: <%= if current_user.profile_information.conditions.present?
+                    current_user.profile_information.conditions
+                  else
+                    "None"
+                  end %> </li>
+          </ul>
+        <% else %>
+        <p>No profile information available.</p>
+      <% end %>
+  </div>
+  <div class="meal-plan-info col-auto">
+    <h3><strong>Meal Plan Preferences</strong></h3>
+    <h5 class="fw-bold mb-3"><%= @meal_plan.plan_title %></h5>
+              <ul class="list-unstyled mb-0">
+                <li class="mb-2"><em>Plan goal:</em> <%= @meal_plan.goal %></li>
+                <li class="mb-2"><em>Diet type:</em> <%= @meal_plan.diet %></li>
+                <li class="mb-2"><em>Meals required:</em> <%= @meal_plan.meals_required %></li>
+                <li class="mb-2"><em>Other considerations:</em> <%= @meal_plan.additional_preferences %></li>
+              </ul>
+    </div>
 
-<div class="summary-info">
-<h3><strong>Profile Information</strong></h3>
-    <% if current_user.profile_information.present? %>
-      <ul>
-        <li>Name: <%= current_user.profile_information.name %></li>
-        <li>Gender: <%= current_user.profile_information.gender %></li>
-        <li>DOB: <%= current_user.profile_information.date_of_birth %></li>
-        <li>Height: <%= current_user.profile_information.height %></li>
-        <li>Weight: <%= current_user.profile_information.weight %></li>
-        <li>Restrictions: <%= if current_user.profile_information.restrictions.present?
-                  current_user.profile_information.restrictions
-                else
-                  "None"
-                end %></li>
-        <li>Conditions: <%= if current_user.profile_information.conditions.present?
-                  current_user.profile_information.conditions
-                else
-                  "None"
-                end %> </li>
-      </ul>
-    <% else %>
-      <p>No profile information available.</p>
-    <% end %>
-  <h4>Plan requirements</h4>
 </div>
 
+<h4>Plan requirements</h4>
 <%= simple_form_for @message, url: user_meal_plan_chat_messages_path(current_user, @meal_plan, @chat) do |f| %>
-<%= f.input :content, label: "Send a message" %>
-<%= f.button :submit, "Send" %>
+  <%= f.input :content, label: "Any adjustments?" %>
+  <%= f.button :submit, "Submit", class: "btn-outline-primary mb-3" %>
 <% end %>
 
-<% @messages.each do |message| %>
-  <% if message.role == "user" %>
-    <div class="d-flex justify-content-end mb-3">
-      <div class="bg-primary text-white p-3 rounded-pill shadow-sm" style="max-width: 70%;">
-        <div class="message small">
-          <%= render_markdown(message.content) %>
+<div id="messages-container mb-5" style="height: 70vh; overflow-y: auto;">
+  <% @messages.each do |message| %>
+    <% if message.role == "user" %>
+      <div class="d-flex justify-content-end mb-3">
+        <div class="bg-primary text-white p-3 rounded-pill shadow-sm" style="max-width: 70%;">
+          <div class="message small">
+            <%= render_markdown(message.content) %>
+          </div>
         </div>
       </div>
-    </div>
-  <% elsif message.role == "assistant" %>
-    <div class="d-flex justify-content-start mb-3">
-      <div class="bg-light border p-3 rounded-3 shadow-sm" style="max-width: 85%;">
-           <%= render_markdown(simple_format(message.content)) %>
-
+    <% elsif message.role == "assistant" %>
+      <div class="d-flex justify-content-start mb-3">
+        <div class="bg-light border p-3 rounded-3 shadow-sm" style="max-width: 85%;">
+          <%= render_markdown(simple_format(message.content)) %>
+        </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
-<% end %>
+</div>
+<div class="footer-container mt-3 w-100">
+  <%= link_to "Back to My Meal Plans", new_user_registration_path, class: "btn btn-outline-primary px-4" %>
+</div>
