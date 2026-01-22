@@ -22,8 +22,6 @@
 #   end
 
 user = User.new(
-  email: "email@email.com",
-user = User.new(
   email: "email@hotmail.com",
   password: "123456"
 )
