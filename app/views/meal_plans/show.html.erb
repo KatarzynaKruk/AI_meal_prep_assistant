@@ -1,33 +1,16 @@
-<div class="row">
-  <div class="col">
-    <h1><%= @meal_plan.name %></h1>
-    <%= raw(render_markdown(@meal_plan.content)) %>
-  </div>
-  <div class="col-md-3">
-    <h2>Chats</h2>
-    <div class="mb-4">
-      <% if @chats.any? %>
-        <ul>
-          <% @chats.each do |chat| %>
-            <li><%= link_to chat.title, chat_path(chat) %></li>
-          <% end %>
-        </ul>
-      <% else %>
-        There are no chats yet.
-      <% end %>
+<div class="container">
+  <div class="row col justify-content-between">
+    <div class="plan-title col-auto mt-4">
+      <h1><%= @meal_plan.plan_title %></h1>
+    </div>
+    <div class="meal-plan-btns col-2">
+      <%= button_to "Edit Meal Plan", user_meal_plan_chat_path(current_user.id, @meal_plan), class: "btn btn-primary flex-fill mt-3", method: :get %>
     </div>
   </div>
-</div>
+    <div class="plan-content">
+      <%= render_markdown(@meal_plan.chat.messages.last.content) %>
+    </div>
 
-<div class="row">
-  <div class="col">
-    <h1><%= @meal_plan.name %></h1>
-    <%= raw(render_markdown(@meal_plan.content)) %>
-  </div>
-  <div class="col-md-3">
-    <h2>Chats</h2>
-    <!-- ... -->
-
-    <%= button_to "Create a new meal plan", challenge_chats_path(@meal_plan), class: "btn btn-primary" %>
+    <%= button_to "Delete Meal Plan", user_meal_plan_path(current_user.id, @meal_plan), method: :delete, class: "btn btn-outline-danger", data: { confirm: "Delete this meal plan? All chats will be lost." } %>
   </div>
 </div>

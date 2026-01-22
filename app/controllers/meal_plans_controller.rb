@@ -7,6 +7,10 @@ class MealPlansController < ApplicationController
     @profile_information = @user.profile_information
   end
 
+  def show
+    @meal_plan = MealPlan.find(params[:id])
+    @chat = @meal_plan.chat
+  end
   def new
     @meal_plan = @user.meal_plans.build()
     @profile_information = @user.profile_information
@@ -22,10 +26,6 @@ class MealPlansController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-  end
-  def show
-    @meal_plan = MealPlan.find(params[:id])
-    @chats = @meal_plan.chats.where(user: current_user)
   end
 
   def destroy
@@ -84,5 +84,5 @@ class MealPlansController < ApplicationController
   def set_user
     @user = current_user
   end
-  
+
 end
