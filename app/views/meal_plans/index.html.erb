@@ -15,7 +15,7 @@
             <li class="mb-2"><strong>Height:</strong> <%= @profile_information.height %></li>
             <li class="mb-2"><strong>Weight:</strong> <%= @profile_information.weight %></li>
             <li class="mb-2"><strong>Restrictions:</strong> <%= @profile_information.restrictions.presence || "None" %></li>
-            <li class="mb-0"><strong>Conditions:</strong> <%= @profile_information.conditions.presence || "None" %></li>
+            <li class="mb-2"><strong>Conditions:</strong> <%= @profile_information.conditions.presence || "None" %></li>
           </ul>
         </div>
         <div class="col-4 d-flex flex-column justify-content-start gap-2">
@@ -36,10 +36,10 @@
             <div class="col-8">
               <h5 class="fw-bold mb-3"><%= plan.plan_title %></h5>
               <ul class="list-unstyled mb-0">
-                <li class="mb-1"><em>Plan goal:</em> <%= plan.goal %></li>
-                <li class="mb-1"><em>Diet type:</em> <%= plan.diet %></li>
-                <li class="mb-1"><em>Meals required:</em> <%= plan.meals_required %></li>
-                <li class="mb-1"><em>Other considerations:</em> <%= plan.additional_preferences %></li>
+                <li class="mb-2"><em>Plan goal:</em> <%= plan.goal %></li>
+                <li class="mb-2"><em>Diet type:</em> <%= plan.diet %></li>
+                <li class="mb-2"><em>Meals required:</em> <%= plan.meals_required %></li>
+                <li class="mb-2"><em>Other considerations:</em> <%= plan.additional_preferences %></li>
                 <li class="text-muted small">
                   <strong>System Prompt (TESTING):</strong> <%= plan.system_prompt %>
                 </li>
