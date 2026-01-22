@@ -11,23 +11,10 @@ class MealPlan < ApplicationRecord
   private
 
   def build_meal_plan
-    # @message = Message.new(message_params)
-    # @message.chat = @chat
-    # @message.role = "user"
     @chat = Chat.create(meal_plan: self, user: self.user)
-
-    # if @message.save
-      ruby_llm_chat = RubyLLM.chat
-      # build_conversation_history(ruby_llm_chat)
-      response = ruby_llm_chat.with_instructions(self.system_prompt).ask("")
-      Message.create(role: "assistant", content: response.content, chat: @chat)
-
-      # @chat.generate_title_from_first_message
-      # Message.create(content: response.content, chat: @chat)
-      # redirect_to user_meal_plan_chat_path(self.user, @chat)
-    # else
-      #  @messages = @chat.messages.order(created_at: :desc)
-      # render "chats/show", status: :unprocessable_entity
+    ruby_llm_chat = RubyLLM.chat
+    response = ruby_llm_chat.with_instructions(self.system_prompt).ask("")
+    Message.create(role: "assistant", content: response.content, chat: @chat)
   end
 end
 
