@@ -1,6 +1,7 @@
 <div class="container py-5">
   <div class="banner text-center mb-5">
-    <h1 class="display-5 fw-bold"><%= current_user.email %>'s meal plans</h1>
+    <h1 class="display-5 fw-bold">Welcome, <%= @profile_information.name %>.</h1>
+    <h3>Here are your meal plans.</h3>
   </div>
   <div class="row mb-5">
   <div class="col-md-10 mx-auto">
@@ -46,7 +47,7 @@
               </ul>
             </div>
             <div class="col-4 d-flex flex-column justify-content-start gap-2">
-              <%= button_to "View Meal Plan", user_meal_plan_chat_path(current_user.id, plan), class: "btn btn-primary btn-lg flex-fill", method: :get %>
+              <%= button_to "View/Edit Meal Plan", user_meal_plan_chat_path(current_user.id, plan), class: "btn btn-primary btn-lg flex-fill", method: :get %>
               <%= button_to "Delete Meal Plan", user_meal_plan_path(current_user.id, plan), method: :delete, class: "btn btn-outline-danger", data: { confirm: "Delete this meal plan? All chats will be lost." } %>
             </div>
           </div>

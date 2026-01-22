@@ -15,23 +15,21 @@ class MealPlansController < ApplicationController
   def create
     @profile_information = @user.profile_information
     @meal_plan = @user.meal_plans.build(meal_plan_params.except(:system_prompt))
-
     @meal_plan.system_prompt = build_system_prompt(@meal_plan, @profile_information)
 
     if @meal_plan.save
-      redirect_to user_meal_plans_path(@user)
+      redirect_to user_meal_plan_chat_path(@user.id, @meal_plan)
     else
       render :new, status: :unprocessable_entity
     end
   end
-
   def show
     @meal_plan = MealPlan.find(params[:id])
     @chats = @meal_plan.chats.where(user: current_user)
   end
 
   def destroy
-    @meal_plan = current_user.meal_plans.find(params[:id])  # Assumes belongs_to :user
+    @meal_plan = current_user.meal_plans.find(params[:id])
     @meal_plan.destroy
     redirect_to user_meal_plans_path(current_user), notice: "Meal plan deleted."
   end
@@ -86,4 +84,5 @@ class MealPlansController < ApplicationController
   def set_user
     @user = current_user
   end
+  
 end
