@@ -41,7 +41,8 @@ class MessagesController < ApplicationController
 
   def set_chat
     @meal_plan = MealPlan.find(params[:meal_plan_id])
-    @chat = @meal_plan.chat
+    @chat = @meal_plan.chat || @meal_plan.build_chat
+    @chat.save! if @chat.new_record?
   end
 
   def message_params
