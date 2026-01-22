@@ -1,6 +1,7 @@
 <div class="container py-5">
   <div class="banner text-center mb-5">
-    <h1 class="display-5 fw-bold"><%= current_user.email %>'s meal plans</h1>
+    <h1 class="display-5 fw-bold">Welcome, <%= @profile_information.name %>.</h1>
+    <h3>Here are your meal plans.</h3>
   </div>
   <div class="row mb-5">
   <div class="col-md-10 mx-auto">
@@ -74,4 +75,4 @@
       </div>
     </div>
   <% end %>
-</div
+</div>
