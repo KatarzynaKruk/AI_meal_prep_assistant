@@ -2,24 +2,23 @@
 <div class="home-page-content text-center py-5">
   <div class="row justify-content-center mb-4">
     <div class="col-md-4 col-lg-3">
-<%= form_with(model: @profile_information, url: user_profile_information_path(@user)) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :height %>
-  <%= f.text_field :height %>
-  <%= f.label :weight %>
-  <%= f.text_field :weight %>
-  <%= f.label :date_of_birth %>
-  <%= f.text_field :date_of_birth %>
-  <%= f.label :gender %>
-  <%= f.text_field :gender %>
-  <%= f.label :restrictions %>
-  <%= f.text_field :restrictions %>
-  <%= f.label :conditions %>
-  <%= f.text_field :conditions %>
-  <%= f.submit %>
-<% end %>
+<%= form_with(model: @profile_information, url: user_profile_information_path(@user), local: true, class: 'w-100') do |f| %>
+        <%= f.label :name, class: 'form-label' %>
+        <%= f.text_field :name, class: 'form-control mb-4', placeholder: 'Enter your name' %>
+        <%= f.label :height, 'Height (cm)', class: 'form-label' %>
+        <%= f.text_field :height, class: 'form-control mb-4', placeholder: 'e.g., 175.0"' %>
+        <%= f.label :weight, 'Weight (kg)', class: 'form-label' %>
+        <%= f.text_field :weight, class: 'form-control mb-4', placeholder: 'e.g., 70' %>
+        <%= f.label :date_of_birth, class: 'form-label' %>
+        <%= f.date_field :date_of_birth, class: 'form-control mb-4' %>
+        <%= f.label :gender, class: 'form-label' %>
+        <%= f.text_field :gender, class: 'form-control mb-4', placeholder: 'e.g., Male, Female, Other' %>
+        <%= f.label :restrictions, class: 'form-label' %>
+        <%= f.text_field :restrictions, class: 'form-control mb-4', placeholder: 'e.g., vegetarian, gluten-free' %>
+        <%= f.label :conditions, class: 'form-label' %>
+        <%= f.text_field :conditions, class: 'form-control mb-4', placeholder: 'e.g., diabetes, hypertension' %>
+        <%= f.submit 'Save Profile', class: 'btn btn-primary btn-lg w-100 mb-0' %>
+      <% end %>
     </div>
   </div>
 </div>
-
