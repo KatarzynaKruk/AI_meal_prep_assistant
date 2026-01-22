@@ -14,7 +14,7 @@ class MealPlan < ApplicationRecord
     # @message = Message.new(message_params)
     # @message.chat = @chat
     # @message.role = "user"
-      @chat = Chat.create(meal_plan: self, user: self.user)
+    @chat = Chat.create(meal_plan: self, user: self.user)
 
     # if @message.save
       ruby_llm_chat = RubyLLM.chat
