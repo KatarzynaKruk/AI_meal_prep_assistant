@@ -1,0 +1,17 @@
+.btn-primary-custom {
+  background-color: #5f7f6a;
+  border-color: #5f7f6a;
+  color: #ffffff;
+
+  &:hover {
+    background-color: #4f6b5a;
+    border-color: #4f6b5a;
+  }
+
+  &:focus,
+  &:active {
+    background-color: #4a6253;
+    border-color: #4a6253;
+    box-shadow: 0 0 0 0.2rem rgba(95, 127, 106, 0.4);
+  }
+}
