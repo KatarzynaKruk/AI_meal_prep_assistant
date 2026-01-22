@@ -1,11 +1,22 @@
-.meal-plans-title {
-  display: flex;
-  justify-content: space-between;
+.profile-intro-text {
+  font-size: medium;
   width: 80%;
 }
 
+.meal-plans-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.5rem;
+
+  h2 {
+    margin-bottom: 0;
+    height: fit-content;
+  }
+}
+
 .meal-requirements {
-  padding-top: 0.5rem;
+  padding-top: 1rem;
   padding-bottom: 1.2rem;
 
   ul {
@@ -14,16 +25,16 @@
 
   li {
     border-style: solid;
-    border-color: #e0dfdc;
+    border-color: #e6e6e6;
     border-radius: 6px;
     padding: 12px;
-    width: 200px;
+    width: 250px;
     max-height: 120px;
   }
 
   .meal-icon {
     position: absolute;
-    top: -.7em;
+    top: -.2em;
     transform: translateX(-15%);
     padding: .2rem .2rem .2rem;
     background-color: #f8f9fa;
@@ -31,13 +42,62 @@
 
   .box-title-small {
     font-size: 12px;
+    font-weight: 600;
     height: fit-content;
     margin-bottom: 2px;
+
   }
 
   .box-body-txt {
-    font-size: 16px;
+    font-size: 14px;
+    margin-top: .7rem;
     margin-bottom: 0;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+
+    line-clamp: 2;
+  }
+}
+
+.card-header-actions {
+  display: flex;
+  justify-content: space-between;
+
+  h4 {
+    width: 80%;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .card-actions {
+    width: fit-content;
+    flex-direction: row;
+
+    a {
+      text-decoration: none;
+    }
+  }
+
+  .fa-pen {
+    padding: 5px;
+    color: #b6b6b6;
+
+    &:hover {
+    color: #0d6efd;
+    }
+  }
+
+  .fa-trash-can {
+    padding: 5px;
+    color: #b6b6b6;
+
+    &:hover {
+    color: #0d6efd;
+    }
   }
 }
 
@@ -45,12 +105,28 @@
   display: flex;
   justify-content: flex-start;
   gap: 1.5rem;
+  height: 100%;
 }
 
 .view-details-link {
   a {
     text-decoration: none;
+    font-size: small;
   }
+}
+
+.considerations {
+  p {
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 0;
+  }
+
+  .considerations-description {
+    font-size: 11px;
+    font-weight: 100;
+  }
+}
 // Page-specific styles for meal plans
 // Using variables from config/_colors.scss for consistency
 
@@ -58,7 +134,7 @@
   border-radius: 12px;
   background: $light-gray;
   transition: all 0.3s ease;
-  
+
   &:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1) !important;
   }
@@ -67,10 +143,10 @@
 // Enhanced form styling
 .form-group-wrapper {
   position: relative;
-  
+
   .input-icon-wrapper {
     position: relative;
-    
+
     .input-icon {
       position: absolute;
       left: 15px;
@@ -88,7 +164,7 @@
       line-height: 1;
       display: inline-flex;
       align-items: center;
-      
+
       &.textarea-icon {
         // For textarea, position it at the top to align with first line of text
         // Label (~24px) + margin (8px) + textarea padding-top (12px) = ~44px
@@ -96,7 +172,7 @@
         transform: translateY(0);
       }
     }
-    
+
     // Adjust input padding when icon is present
     .form-control-enhanced {
       padding-left: 45px;
@@ -104,18 +180,18 @@
       border-radius: 8px;
       transition: all 0.3s ease;
       font-size: 1rem;
-      
+
       &:focus {
         border-color: $primary;
         box-shadow: 0 0 0 0.2rem rgba($primary, 0.15);
         outline: none;
       }
-      
+
       &:hover:not(:focus) {
         border-color: rgba(0, 0, 0, 0.2);
       }
     }
-    
+
     // Textarea specific styling
     textarea.form-control-enhanced {
       padding-top: 12px;
@@ -123,7 +199,7 @@
       resize: vertical;
       min-height: 100px;
     }
-    
+
     // Label styling
     .form-label-enhanced {
       font-weight: 600;
@@ -131,7 +207,7 @@
       margin-bottom: 8px;
       font-size: 0.95rem;
     }
-    
+
     // When input is focused, update icon color using :has() selector
     &:has(.form-control-enhanced:focus) .input-icon {
       color: $primary;

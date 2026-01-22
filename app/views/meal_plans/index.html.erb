@@ -1,14 +1,29 @@
 <div class="container py-5">
-  <div class="banner text-center mb-5">
-    <h1 class="display-5 fw-bold">Welcome, <%= @profile_information.name %>.</h1>
-    <h3>Here are your meal plans.</h3>
+  <div class="text-center">
+    <%= image_tag "cookie_monster.jpg",
+    class: "rounded-circle mb-2",
+    style: "width: 80px; height: 80px; object-fit: cover;",
+    alt: "Profile picture" %>
+  </div>
+
+  <div class="banner text-center">
+    <h5 class="display-5 fw-bold">Hello, <%= @profile_information.name %>!</h5>
+    <p class="profile-intro-text mx-auto">The more accurate the information you share about you, the better we can tailor your meal plans. ;)</p>
   </div>
   <div class="row mb-5">
   <div class="col-md-10 mx-auto">
     <div class="card border-0 shadow-sm p-4" style="border-radius: 12px; background: #f8f9fa;">
       <div class="row">
-        <div class="col-8">
-          <h5 class="fw-bold mb-3">Profile Information</h5>
+        <div class="">
+          <div class="card-header-actions">
+            <h4 class="fw-bold mb-3">Profile Information</h4>
+            <div class="card-actions">
+              <%= link_to edit_user_profile_information_path(current_user) do %>
+                <i class="fa-solid fa-pen fa-sm"></i>
+              <% end %>
+            </div>
+          </div>
+
           <ul class="list-unstyled mb-0">
             <li class="mb-2"><strong>Name:</strong> <%= @profile_information.name %></li>
             <li class="mb-2"><strong>Gender:</strong> <%= @profile_information.gender %></li>
@@ -19,9 +34,6 @@
             <li class="mb-2"><strong>Conditions:</strong> <%= @profile_information.conditions.presence || "None" %></li>
           </ul>
         </div>
-        <div class="col-4 d-flex flex-column justify-content-start gap-2">
-          <%= button_to "Edit Profile", edit_user_profile_information_path(current_user),class: "btn btn-outline-primary btn-lg flex-fill",method: :get %>
-        </div>
       </div>
     </div>
   </div>
@@ -29,9 +41,11 @@
 <div class="text-center mb-4">
 
   </div>
-  <div class="meal-plans-title">
+  <div class="meal-plans-title col-md-10 mx-auto">
     <h2>Meal Plans</h2>
-    <%= link_to "New Meal Plan", new_user_meal_plan_path(current_user), class: "btn btn-success btn-lg" %>
+    <%= link_to new_user_meal_plan_path(current_user), class: "btn btn-outline-primary" do %>
+      <i class="fa-solid fa-plus"></i> New plan
+    <% end %>
   </div>
 
   <% @meal_plans.each do |plan| %>
@@ -39,31 +53,42 @@
       <div class="col-md-10 mx-auto">
         <div class="card border-0 shadow-sm p-4" style="border-radius: 12px; background: #f8f9fa;">
 
-          <h4 class="fw-bold mb-3"><%= plan.plan_title %></h5>
+          <div class="card-header-actions">
+            <h4 class="fw-bold mb-3"><%= plan.plan_title %></h4>
+            <div class="card-actions">
+              <%= link_to user_meal_plan_chat_path(current_user.id, plan) do %>
+                <i class="fa-solid fa-pen fa-sm"></i>
+              <% end %>
+              <%= link_to user_meal_plan_path(current_user.id, plan), method: :delete, data: { confirm: "Delete this meal plan? All chats will be lost." } do %>
+                <i class="fa-solid fa-trash-can fa-sm"></i>
+              <% end %>
+            </div>
+          </div>
+
           <div class="meal-requirements">
             <ul class="list-unstyled mb-0 requirements-list">
               <li class="mb-2">
-                <i class="fa-solid fa-medal meal-icon"></i>
-                <p class="box-title-small"><em>Plan goal</em></p>
+                <i class="fa-solid fa-medal fa-lg meal-icon"></i>
+                <p class="box-title-small">Plan goal</p>
                 <p class="box-body-txt"><%= plan.goal %></p>
               </li>
               <li class="mb-2">
-                <i class="fa-brands fa-font-awesome meal-icon"></i>
-                <p class="box-title-small"><em>Diet type</em></p>
+                <i class="fa-duotone fa-solid fa-cookie-bite fa-lg meal-icon"></i>
+                <p class="box-title-small">Diet type</p>
                 <p class="box-body-txt"><%= plan.diet %></p>
               </li>
               <li class="mb-2">
-                <i class="fa-solid fa-utensils meal-icon"></i>
-                <p class="box-title-small"><em>Meals required</em></p>
+                <i class="fa-solid fa-utensils fa-lg meal-icon"></i>
+                <p class="box-title-small">Meals required</p>
                 <p class="box-body-txt"><%= plan.meals_required %></p>
               </li>
             </ul>
           </div>
 
-          <p>
-            <em>Other considerations:</em>
-            <%= plan.additional_preferences %>
-          </p>
+          <div class="considerations">
+            <p>Other considerations</p>
+            <p class="considerations-description"><%= plan.additional_preferences %></p>
+          </div>
 
           <div class="view-details-link d-flex justify-content-end">
             <%= link_to user_meal_plan_chat_path(current_user.id, plan) do %>
