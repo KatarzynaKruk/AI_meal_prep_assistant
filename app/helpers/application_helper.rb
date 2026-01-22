@@ -14,7 +14,7 @@ def render_markdown(text)
     strikethrough: true,
     superscript: true
   })
-  sanitize(markdown.render(text))  # Rails sanitize for extra XSS protection
+  sanitize(markdown.render(text)).html_safe  # Rails sanitize for extra XSS protection, then mark as HTML-safe
 end
 
 

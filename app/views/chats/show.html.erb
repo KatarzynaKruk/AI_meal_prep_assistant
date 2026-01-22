@@ -4,23 +4,27 @@
 
 <div class="summary-info">
 <h3><strong>Profile Information</strong></h3>
-    <ul>
-      <li>Name: <%= current_user.profile_information.name %></li>
-      <li>Gender: <%= current_user.profile_information.gender %></li>
-      <li>DOB: <%= current_user.profile_information.date_of_birth %></li>
-      <li>Height: <%= current_user.profile_information.height %></li>
-      <li>Weight: <%= current_user.profile_information.weight %></li>
-      <li>Restrictions: <%= if current_user.profile_information.restrictions.present?
-                current_user.profile_information.restrictions
-              else
-                "None"
-              end %></li>
-      <li>Conditions: <%= if current_user.profile_information.conditions.present?
-                current_user.profile_information.conditions
-              else
-                "None"
-              end %> </li>
-    </ul>
+    <% if current_user.profile_information.present? %>
+      <ul>
+        <li>Name: <%= current_user.profile_information.name %></li>
+        <li>Gender: <%= current_user.profile_information.gender %></li>
+        <li>DOB: <%= current_user.profile_information.date_of_birth %></li>
+        <li>Height: <%= current_user.profile_information.height %></li>
+        <li>Weight: <%= current_user.profile_information.weight %></li>
+        <li>Restrictions: <%= if current_user.profile_information.restrictions.present?
+                  current_user.profile_information.restrictions
+                else
+                  "None"
+                end %></li>
+        <li>Conditions: <%= if current_user.profile_information.conditions.present?
+                  current_user.profile_information.conditions
+                else
+                  "None"
+                end %> </li>
+      </ul>
+    <% else %>
+      <p>No profile information available.</p>
+    <% end %>
   <h4>Plan requirements</h4>
 </div>
 
