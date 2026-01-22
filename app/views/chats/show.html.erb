@@ -40,10 +40,6 @@
 </div>
 
 <h4>Plan requirements</h4>
-<%= simple_form_for @message, url: user_meal_plan_chat_messages_path(current_user, @meal_plan, @chat) do |f| %>
-  <%= f.input :content, label: "Any adjustments?" %>
-  <%= f.button :submit, "Submit", class: "btn-outline-primary mb-3" %>
-<% end %>
 
 <div id="messages-container mb-5" style="height: 70vh; overflow-y: auto;">
   <% @messages.each do |message| %>
@@ -51,19 +47,23 @@
       <div class="d-flex justify-content-end mb-3">
         <div class="bg-primary text-white p-3 rounded-pill shadow-sm" style="max-width: 70%;">
           <div class="message small">
-            <%= render_markdown(message.content) %>
+            <%= raw(render_markdown(message.content)) %>
           </div>
         </div>
       </div>
     <% elsif message.role == "assistant" %>
       <div class="d-flex justify-content-start mb-3">
         <div class="bg-light border p-3 rounded-3 shadow-sm" style="max-width: 85%;">
-          <%= render_markdown(simple_format(message.content)) %>
+          <%= raw(render_markdown(message.content)) %>
         </div>
       </div>
     <% end %>
   <% end %>
 </div>
 <div class="footer-container mt-3 w-100">
+<%= simple_form_for @message, url: user_meal_plan_chat_messages_path(current_user, @meal_plan, @chat) do |f| %>
+  <%= f.input :content, label: "Any adjustments?" %>
+  <%= f.button :submit, "Submit", class: "btn-outline-primary mb-3" %>
+<% end %>
   <%= link_to "Back to My Meal Plans", user_meal_plans_path(current_user), class: "btn btn-outline-primary px-4" %>
 </div>
