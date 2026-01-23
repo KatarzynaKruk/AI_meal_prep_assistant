@@ -47,3 +47,19 @@ body::before {
   color: #fff;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
 }
+
+.hero-card {
+  background: rgba(255, 255, 255, 0.65); /* semi-transparent like cards */
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  max-width: 1325px; /* same width as 3 cards row (Bootstrap container) */
+  width: 100%;
+  text-align: center;
+}
+
+/* Optional: hover lift effect like cards */
+.hero-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
