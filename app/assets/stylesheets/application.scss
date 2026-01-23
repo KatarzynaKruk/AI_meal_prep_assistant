@@ -10,4 +10,9 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "pages/chat_buttons";
+
+main {
+  padding-top: 55px;
+}
 @import "pages/meal_plans";
