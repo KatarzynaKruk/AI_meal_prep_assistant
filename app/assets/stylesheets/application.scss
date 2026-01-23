@@ -16,3 +16,11 @@ main {
   padding-top: 55px;
 }
 @import "pages/meal_plans";
+
+.app-background {
+  min-height: 100vh;
+  background-image: asset-url("AI_Meal_Prep_Log_In.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
