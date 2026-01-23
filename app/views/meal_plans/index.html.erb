@@ -20,12 +20,12 @@
       </div>
 
       <ul class="list-unstyled mb-0 profile-list">
-        <li class="mb-2"><strong>Gender:</strong> <%= @profile_information.gender %></li>
+        <li class="mb-2"><strong>Gender:</strong> <%= @profile_information.gender.capitalize %></li>
         <li class="mb-2"><strong>DOB:</strong> <%= @profile_information.date_of_birth %></li>
-        <li class="mb-2"><strong>Height:</strong> <%= @profile_information.height %></li>
-        <li class="mb-2"><strong>Weight:</strong> <%= @profile_information.weight %></li>
-        <li class="mb-2"><strong>Restrictions:</strong> <%= @profile_information.restrictions.presence || "None" %></li>
-        <li><strong>Conditions:</strong> <%= @profile_information.conditions.presence || "None" %></li>
+        <li class="mb-2"><strong>Height:</strong> <%= @profile_information.height.round(0) %> cm</li>
+        <li class="mb-2"><strong>Weight:</strong> <%= @profile_information.weight %> kg</li>
+        <li class="mb-2"><strong>Restrictions:</strong> <%= @profile_information.restrictions.capitalize.presence || "None" %></li>
+        <li><strong>Conditions:</strong> <%= @profile_information.conditions.capitalize.presence || "None" %></li>
       </ul>
     </div>
   </div>
@@ -48,7 +48,7 @@
         <div class="card border-0 shadow-sm p-4 meal-plan-card">
 
           <div class="card-header-actions mb-3">
-            <h4 class="fw-bold mb-0 meal-plan-title"><%= plan.plan_title %></h4>
+            <h4 class="fw-bold mb-0 meal-plan-title"><%= plan.plan_title.capitalize %></h4>
 
             <div class="card-actions">
               <%= link_to user_meal_plan_chat_path(current_user.id, plan)  do %>
@@ -69,19 +69,19 @@
               <li class="requirement-box">
                 <i class="fa-solid fa-medal fa-lg meal-icon"></i>
                 <p class="box-title-small">Plan goal</p>
-                <p class="box-body-txt clamp-2"><%= plan.goal %></p>
+                <p class="box-body-txt clamp-2"><%= plan.goal.capitalize %></p>
               </li>
 
               <li class="requirement-box">
                 <i class="fa-solid fa-cookie-bite fa-lg meal-icon"></i>
                 <p class="box-title-small">Diet type</p>
-                <p class="box-body-txt clamp-2"><%= plan.diet %></p>
+                <p class="box-body-txt clamp-2"><%= plan.diet.capitalize %></p>
               </li>
 
               <li class="requirement-box">
                 <i class="fa-solid fa-utensils fa-lg meal-icon"></i>
                 <p class="box-title-small">Meals required</p>
-                <p class="box-body-txt clamp-2"><%= plan.meals_required %></p>
+                <p class="box-body-txt clamp-2"><%= plan.meals_required.capitalize %></p>
               </li>
 
             </ul>
@@ -90,7 +90,7 @@
           <div class="considerations mb-3">
             <p class="fw-bold mb-1">Other considerations</p>
             <p class="considerations-description clamp-2">
-              <%= plan.additional_preferences.presence || "None" %>
+              <%= plan.additional_preferences.capitalize.presence || "None" %>
             </p>
           </div>
 
