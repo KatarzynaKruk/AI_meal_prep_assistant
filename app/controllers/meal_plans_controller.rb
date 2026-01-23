@@ -3,7 +3,7 @@ class MealPlansController < ApplicationController
   # resources :meal_plans, only: [:create, :index, :show]
 
   def index
-    @meal_plans = @user.meal_plans
+    @meal_plans = @user.meal_plans.order(created_at: :desc)
     @profile_information = @user.profile_information
   end
 
