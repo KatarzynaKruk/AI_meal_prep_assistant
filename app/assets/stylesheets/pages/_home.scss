@@ -1,1 +1,65 @@
 // Specific CSS for your home-page
+body {
+  background-image: url("/assets/AI_Meal_Prep_Log_In.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0; /* top:0; left:0; bottom:0; right:0 */
+  background: rgba(0, 0, 0, 0.05); /* 40% black to darken image */
+  z-index: 0; /* behind all content */
+}
+
+.banner,
+.home-page-content {
+  position: relative;
+  z-index: 1;
+}
+
+.home-page-content .card {
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+
+.home-page-content .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Hero / Banner */
+.banner h1,
+.banner p {
+  color: #fff;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+}
+
+/* How it works section */
+.home-page-content h2,
+.home-page-content p {
+  color: #fff;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+.hero-card {
+  background: rgba(255, 255, 255, 0.65); /* semi-transparent like cards */
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  max-width: 1325px; /* same width as 3 cards row (Bootstrap container) */
+  width: 100%;
+  text-align: center;
+}
+
+/* Optional: hover lift effect like cards */
+.hero-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
