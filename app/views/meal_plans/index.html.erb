@@ -38,7 +38,7 @@
     <div class="d-flex justify-content-between align-items-center mb-4">
       <h2 class="mb-0">Meal Plans</h2>
 
-      <%= link_to new_user_meal_plan_path(current_user), class: "btn btn-outline-primary" do %>
+      <%= link_to new_user_meal_plan_path(current_user.id), class: "btn btn-outline-primary" do %>
         <i class="fa-solid fa-plus"></i> New plan
       <% end %>
     </div>
