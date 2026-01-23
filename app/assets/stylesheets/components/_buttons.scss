@@ -1,6 +1,12 @@
 // Custom button styles for the meal prep assistant
 // Using color variables from config/_colors.scss for consistency
+a {
+  color: $green;
 
+  &:hover {
+    color: $dark-green;
+  }
+}
 .btn-1 {
   @extend .btn;
   @extend .btn-primary;
@@ -8,16 +14,18 @@
   font-weight: 600;
   border-radius: 8px;
   transition: all 0.3s ease;
-  background-color: $primary;
-  border-color: $primary;
-  
+  color: $light-gray;
+  background-color: $orange;
+  border-color: $orange;
+
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    background-color: darken($primary, 5%);
-    border-color: darken($primary, 5%);
+    color: $light-gray;
+    background-color: $dark-orange;
+    border-color: $dark-orange;
   }
-  
+
   &:disabled {
     opacity: 0.7;
     cursor: not-allowed;
@@ -32,14 +40,15 @@
   font-weight: 600;
   border-radius: 8px;
   transition: all 0.3s ease;
-  color: $gray;
-  border-color: $gray;
-  
+  color: $light-gray;
+  background-color: $green;
+  border-color: $green;
+
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    background-color: $light-gray;
-    color: $gray;
-    border-color: $gray;
+    background-color: $dark-green;
+    color: $light-gray;
+    border-color: $dark-green;
   }
 }

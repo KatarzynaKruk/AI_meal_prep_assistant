@@ -21,7 +21,7 @@
 
       <ul class="list-unstyled mb-0 profile-list">
         <li class="mb-2"><strong>Gender:</strong> <%= @profile_information.gender %></li>
-        <li class="mb-2"><strong>DOB:</strong> <%= @profile_information.date_of_birth %></li>
+        <li class="mb-2"><strong>Birth date:</strong> <%= @profile_information.date_of_birth %></li>
         <li class="mb-2"><strong>Height:</strong> <%= @profile_information.height %></li>
         <li class="mb-2"><strong>Weight:</strong> <%= @profile_information.weight %></li>
         <li class="mb-2"><strong>Restrictions:</strong> <%= @profile_information.restrictions.presence || "None" %></li>
@@ -38,7 +38,7 @@
     <div class="d-flex justify-content-between align-items-center mb-4">
       <h2 class="mb-0">Meal Plans</h2>
 
-      <%= link_to new_user_meal_plan_path(current_user), class: "btn btn-outline-primary" do %>
+      <%= link_to new_user_meal_plan_path(current_user), class: "btn btn-2" do %>
         <i class="fa-solid fa-plus"></i> New plan
       <% end %>
     </div>
