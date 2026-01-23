@@ -1,7 +1,10 @@
-<div class="container py-5">
-  <div class="row">
-    <div class="col-md-10 mx-auto">
-      <div class="card border-0 shadow-sm p-4 meal-plan-card">
+<% content_for :full_width, true %>
+
+<section class="profile-hero">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-md-10 mx-auto">
+        <div class="card border-0 shadow-sm p-4 meal-plan-card">
         <h1 class="mb-4">
           <i class="fas fa-utensils me-2"></i>Create Meal Plan
         </h1>
@@ -10,35 +13,35 @@
           <%= simple_form_for([@user, @meal_plan], html: { data: { form_loader_target: "form" } }) do |f| %>
           <div class="form-group-wrapper mb-4">
             <div class="input-icon-wrapper">
-              <%= f.input :plan_title, label: "Meal Plan name", input_html: { class: "form-control form-control-enhanced" }, required: false, label_html: { class: "form-label-enhanced" } %>
+              <%= f.input :plan_title, label: "Meal Plan name", placeholder: "e.g. Weekly Healthy Plan", input_html: { class: "form-control form-control-enhanced" }, required: false, label_html: { class: "form-label-enhanced" } %>
               <i class="fas fa-tag input-icon"></i>
             </div>
           </div>
           
           <div class="form-group-wrapper mb-4">
             <div class="input-icon-wrapper">
-              <%= f.input :diet, placeholder: "What type of diet do you follow? e.g. Vegetarian, pescatarian, no specific diet etc.", input_html: { class: "form-control form-control-enhanced" }, label_html: { class: "form-label-enhanced" } %>
-              <i class="fas fa-leaf input-icon"></i>
+              <%= f.input :diet, label: "What type of diet do you follow?", placeholder: "e.g. Vegetarian, pescatarian, no specific diet etc.", input_html: { class: "form-control form-control-enhanced" }, label_html: { class: "form-label-enhanced" } %>
+              <i class="fa-solid fa-cookie-bite input-icon"></i>
             </div>
           </div>
           
           <div class="form-group-wrapper mb-4">
             <div class="input-icon-wrapper">
-              <%= f.input :goal, placeholder: "What is your goal? e.g. build muscles, lose weight, etc.", input_html: { class: "form-control form-control-enhanced" }, label_html: { class: "form-label-enhanced" } %>
-              <i class="fas fa-bullseye input-icon"></i>
+              <%= f.input :goal, label: "What is your goal?", placeholder: "e.g. build muscles, lose weight, etc.", input_html: { class: "form-control form-control-enhanced" }, label_html: { class: "form-label-enhanced" } %>
+              <i class="fa-solid fa-medal input-icon"></i>
             </div>
           </div>
           
           <div class="form-group-wrapper mb-4">
             <div class="input-icon-wrapper">
-              <%= f.input :meals_required, placeholder: "How many meals do you want this week?  e.g. All days except Wednesday, breakfast, lunch and dinner", input_html: { class: "form-control form-control-enhanced" }, required: false, label_html: { class: "form-label-enhanced" } %>
-              <i class="fas fa-calendar-week input-icon"></i>
+              <%= f.input :meals_required, label: "How many meals do you want this week?", placeholder: "e.g. All days except Wednesday, breakfast, lunch and dinner", input_html: { class: "form-control form-control-enhanced" }, required: false, label_html: { class: "form-label-enhanced" } %>
+              <i class="fa-solid fa-utensils input-icon"></i>
             </div>
           </div>
           
           <div class="form-group-wrapper mb-4">
             <div class="input-icon-wrapper">
-              <%= f.input :additional_preferences, placeholder: "Any other considerations while we make your plan? e.g. I do not like cucumbers, etc.", input_html: { class: "form-control form-control-enhanced", rows: 4 }, required: false, label_html: { class: "form-label-enhanced" } %>
+              <%= f.input :additional_preferences, label: "Any other considerations while we make your plan?", placeholder: "e.g. I do not like cucumbers, etc.", input_html: { class: "form-control form-control-enhanced", rows: 4 }, required: false, label_html: { class: "form-label-enhanced" } %>
               <i class="fas fa-comment-dots input-icon textarea-icon"></i>
             </div>
           </div>
@@ -62,4 +65,4 @@
       </div>
     </div>
   </div>
-</div>
+</section>

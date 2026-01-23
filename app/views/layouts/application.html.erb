@@ -10,20 +10,16 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="app-background">
      <%= link_to "Skip to main content", "#main-content", class: "visually-hidden-focusable" %>
     <header>
       <%= render "shared/navbar" %>
     </header>
 
   <main id="main-content">
-    <% if content_for?(:full_width) %>
-      <%= yield :full_width %>
-    <% else %>
-      <div class="container">
+    <div class="<%= content_for?(:full_width) ? "container-fluid" : "container" %>">
         <%= yield %>
-      </div>
-    <% end %>
+    </div>
   </main>
     <%= render "shared/flashes" %>
   </body>

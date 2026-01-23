@@ -1,5 +1,9 @@
 #main-content { display: block; }
 
+.meal-requirements {
+  padding-top: 0.5rem;
+  padding-bottom: 1.2rem;
+}
 .profile-column { padding-top: 100px; }
 .meal-plans-column { padding-top: 100px; }
 
@@ -20,6 +24,7 @@
   top: 0;
   right: 0;
   text-decoration: none;
+}
 
   .fa-pen {
     padding: 5px;
@@ -27,7 +32,7 @@
 
     &:hover { color: #0d6efd; }
   }
-}
+
 
 .avatar-column {
   display: flex;
@@ -38,6 +43,14 @@
   width: 100%;
 }
 
+.view-details-link {
+  a {
+    text-decoration: none;
+  }
+}
+
+// Page-specific styles for meal plans
+// Using variables from config/_colors.scss for consistency
 .profile-avatar {
   width: 80px;
   height: 80px;
@@ -115,7 +128,7 @@
   margin-top: 12px;
 }
 
-.meal-icon {
+.meal-icon-card {
   position: absolute;
   top: -0.3rem;
   left: 12px;
