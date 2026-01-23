@@ -21,6 +21,12 @@
 #     t.index ["user_id"], name: "index_meal_plans_on_user_id"
 #   end
 
+MealPlan.destroy_all
+ProfileInformation.destroy_all
+User.destroy_all
+
+puts "Creating new seed"
+
 user = User.new(
   email: "email@hotmail.com",
   password: "123456"
