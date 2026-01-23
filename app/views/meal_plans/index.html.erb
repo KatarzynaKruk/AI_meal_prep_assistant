@@ -25,13 +25,13 @@
           </div>
 
           <ul class="list-unstyled mb-0">
-            <li class="mb-2"><strong>Name:</strong> <%= @profile_information.name %></li>
-            <li class="mb-2"><strong>Gender:</strong> <%= @profile_information.gender %></li>
+            <li class="mb-2"><strong>Name:</strong> <%= @profile_information.name.capitalize %></li>
+            <li class="mb-2"><strong>Gender:</strong> <%= @profile_information.gender.capitalize %></li>
             <li class="mb-2"><strong>DOB:</strong> <%= @profile_information.date_of_birth %></li>
-            <li class="mb-2"><strong>Height:</strong> <%= @profile_information.height %></li>
-            <li class="mb-2"><strong>Weight:</strong> <%= @profile_information.weight %></li>
-            <li class="mb-2"><strong>Restrictions:</strong> <%= @profile_information.restrictions.presence || "None" %></li>
-            <li class="mb-2"><strong>Conditions:</strong> <%= @profile_information.conditions.presence || "None" %></li>
+            <li class="mb-2"><strong>Height:</strong> <%= @profile_information.height %>cm</li>
+            <li class="mb-2"><strong>Weight:</strong> <%= @profile_information.weight %>kg</li>
+            <li class="mb-2"><strong>Restrictions:</strong> <%= @profile_information.restrictions.capitalize.presence || "None" %></li>
+            <li class="mb-2"><strong>Conditions:</strong> <%= @profile_information.conditions.capitalize.presence || "None" %></li>
           </ul>
         </div>
       </div>
@@ -70,28 +70,28 @@
               <li class="mb-2">
                 <i class="fa-solid fa-medal fa-lg meal-icon"></i>
                 <p class="box-title-small">Plan goal</p>
-                <p class="box-body-txt"><%= plan.goal %></p>
+                <p class="box-body-txt"><%= plan.goal.capitalize %></p>
               </li>
               <li class="mb-2">
                 <i class="fa-duotone fa-solid fa-cookie-bite fa-lg meal-icon"></i>
                 <p class="box-title-small">Diet type</p>
-                <p class="box-body-txt"><%= plan.diet %></p>
+                <p class="box-body-txt"><%= plan.diet.capitalize %></p>
               </li>
               <li class="mb-2">
                 <i class="fa-solid fa-utensils fa-lg meal-icon"></i>
                 <p class="box-title-small">Meals required</p>
-                <p class="box-body-txt"><%= plan.meals_required %></p>
+                <p class="box-body-txt"><%= plan.meals_required.capitalize %></p>
               </li>
             </ul>
           </div>
 
           <div class="considerations">
             <p>Other considerations</p>
-            <p class="considerations-description"><%= plan.additional_preferences %></p>
+            <p class="considerations-description"><%= plan.additional_preferences.capitalize %></p>
           </div>
 
           <div class="view-details-link d-flex justify-content-end">
-            <%= link_to user_meal_plan_chat_path(current_user.id, plan) do %>
+            <%= link_to user_meal_plan_path(current_user.id, plan) do %>
               View <i class="fa-solid fa-chevron-right" style="vertical-align: middle";></i>
             <% end %>
           </div>
