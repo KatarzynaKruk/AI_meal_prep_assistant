@@ -51,6 +51,7 @@
   a {
     text-decoration: none;
   }
+}
 // Page-specific styles for meal plans
 // Using variables from config/_colors.scss for consistency
 
@@ -58,7 +59,7 @@
   border-radius: 12px;
   background: $light-gray;
   transition: all 0.3s ease;
-  
+
   &:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1) !important;
   }
@@ -67,10 +68,10 @@
 // Enhanced form styling
 .form-group-wrapper {
   position: relative;
-  
+
   .input-icon-wrapper {
     position: relative;
-    
+
     .input-icon {
       position: absolute;
       left: 15px;
@@ -88,7 +89,7 @@
       line-height: 1;
       display: inline-flex;
       align-items: center;
-      
+
       &.textarea-icon {
         // For textarea, position it at the top to align with first line of text
         // Label (~24px) + margin (8px) + textarea padding-top (12px) = ~44px
@@ -96,7 +97,7 @@
         transform: translateY(0);
       }
     }
-    
+
     // Adjust input padding when icon is present
     .form-control-enhanced {
       padding-left: 45px;
@@ -104,18 +105,18 @@
       border-radius: 8px;
       transition: all 0.3s ease;
       font-size: 1rem;
-      
+
       &:focus {
         border-color: $primary;
         box-shadow: 0 0 0 0.2rem rgba($primary, 0.15);
         outline: none;
       }
-      
+
       &:hover:not(:focus) {
         border-color: rgba(0, 0, 0, 0.2);
       }
     }
-    
+
     // Textarea specific styling
     textarea.form-control-enhanced {
       padding-top: 12px;
@@ -123,7 +124,7 @@
       resize: vertical;
       min-height: 100px;
     }
-    
+
     // Label styling
     .form-label-enhanced {
       font-weight: 600;
@@ -131,7 +132,7 @@
       margin-bottom: 8px;
       font-size: 0.95rem;
     }
-    
+
     // When input is focused, update icon color using :has() selector
     &:has(.form-control-enhanced:focus) .input-icon {
       color: $primary;
