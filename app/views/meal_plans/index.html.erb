@@ -51,13 +51,12 @@
             <h4 class="fw-bold mb-0 meal-plan-title"><%= plan.plan_title %></h4>
 
             <div class="card-actions">
-              <%= link_to user_meal_plan_chat_path(current_user.id, plan)  do %>
+              <%= link_to user_meal_plan_chat_path(current_user.id, plan) do %>
                 <i class="fa-solid fa-pen fa-sm me-2"></i>
               <% end %>
 
               <%= link_to user_meal_plan_path(current_user.id, plan),
-                method: :delete,
-                data: { confirm: "Delete this meal plan? All chats will be lost." } do %>
+                data: { turbo_method: :delete , turbo_confirm: "Delete this meal plan? All chats will be lost." } do %>
                 <i class="fa-solid fa-trash-can fa-sm"></i>
               <% end %>
             </div>
@@ -67,19 +66,19 @@
             <ul class="list-unstyled requirements-list mb-0">
 
               <li class="requirement-box">
-                <i class="fa-solid fa-medal fa-lg meal-icon"></i>
+                <i class="fa-solid fa-medal fa-lg meal-icon-card"></i>
                 <p class="box-title-small">Plan goal</p>
                 <p class="box-body-txt clamp-2"><%= plan.goal %></p>
               </li>
 
               <li class="requirement-box">
-                <i class="fa-solid fa-cookie-bite fa-lg meal-icon"></i>
+                <i class="fa-solid fa-cookie-bite fa-lg meal-icon-card"></i>
                 <p class="box-title-small">Diet type</p>
                 <p class="box-body-txt clamp-2"><%= plan.diet %></p>
               </li>
 
               <li class="requirement-box">
-                <i class="fa-solid fa-utensils fa-lg meal-icon"></i>
+                <i class="fa-solid fa-utensils fa-lg meal-icon-card"></i>
                 <p class="box-title-small">Meals required</p>
                 <p class="box-body-txt clamp-2"><%= plan.meals_required %></p>
               </li>
