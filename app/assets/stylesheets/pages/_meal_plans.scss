@@ -38,6 +38,14 @@
   width: 100%;
 }
 
+.view-details-link {
+  a {
+    text-decoration: none;
+  }
+}
+
+// Page-specific styles for meal plans
+// Using variables from config/_colors.scss for consistency
 .profile-avatar {
   width: 80px;
   height: 80px;
