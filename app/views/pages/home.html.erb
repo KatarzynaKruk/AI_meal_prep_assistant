@@ -1,23 +1,28 @@
-<!-- HERO / BANNER -->
-<% content_for :page_class, "home-background" %>
 <div class="banner text-center py-5">
   <div class="container">
-    <h1 class="display-5 fw-bold mb-3">
+    <!-- Headline stays outside the container -->
+    <h1 class="display-5 fw-bold mb-4">
       Your Week, Planned by AI 🍽️
     </h1>
-    <p class="lead text-muted mb-4">
-      No more “what’s for dinner?” stress. Our AI creates weekly meal plans tailored
-      to your tastes and schedule—so you spend less time deciding and more time enjoying.
-    </p>
 
-    <% if current_user %>
-      <%= link_to "My meal plans", user_meal_plans_path(current_user), class: "btn btn-primary btn-lg px-4" %>
-    <% else %>
-      <%= link_to "Sign up free", new_user_registration_path, class: "btn btn-primary btn-lg px-4 me-2" %>
-      <%= link_to "Login", new_user_session_path, class: "btn btn-outline-secondary btn-lg px-4" %>
-    <% end %>
+    <!-- Semi-transparent container for paragraph + buttons -->
+    <div class="hero-card mx-auto p-4">
+      <p class="lead text-muted mb-4">
+        No more “what’s for dinner?” stress. Our AI creates weekly meal plans tailored
+        to your tastes and schedule—so you spend less time deciding and more time enjoying.
+      </p>
+
+      <% if current_user %>
+        <%= link_to "My meal plans", user_meal_plans_path(current_user), class: "btn btn-primary btn-lg px-4" %>
+      <% else %>
+        <%= link_to "Sign up free", new_user_registration_path, class: "btn btn-primary btn-lg px-4 me-2" %>
+        <%= link_to "Login", new_user_session_path, class: "btn btn-secondary btn-lg px-4" %>
+      <% end %>
+    </div>
   </div>
 </div>
+
+
 
 <!-- HOW IT WORKS -->
 <div class="home-page-content py-5">
