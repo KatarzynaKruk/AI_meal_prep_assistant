@@ -1,146 +1,169 @@
-.meal-plans-title {
+#main-content { display: block; }
+
+.profile-column { padding-top: 100px; }
+.meal-plans-column { padding-top: 100px; }
+
+
+/* PROFILE CARD */
+
+.profile-card {
+  border-radius: 12px;
+  background: #f8f9fa;
+}
+
+.profile-card-header {
+  position: relative;
+}
+
+.profile-edit {
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-decoration: none;
+
+  .fa-pen {
+    padding: 5px;
+    color: #b6b6b6;
+
+    &:hover { color: #0d6efd; }
+  }
+}
+
+.avatar-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
+
+.profile-name {
+  margin-top: 12px;
+  margin-bottom: 0;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.profile-list {
+  width: 100%;
+}
+
+/* MEAL PLAN CARD */
+
+.meal-plan-card {
+  border-radius: 12px;
+  background: #f8f9fa;
+}
+
+.card-header-actions {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.meal-plan-title {
   width: 80%;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
-.meal-requirements {
-  padding-top: 0.5rem;
-  padding-bottom: 1.2rem;
+.card-actions {
+  display: flex;
+  gap: 6px;
+  white-space: nowrap;
 
-  ul {
-    position: relative;
-  }
+  a { text-decoration: none; }
 
-  li {
-    border-style: solid;
-    border-color: #e0dfdc;
-    border-radius: 6px;
-    padding: 12px;
-    width: 200px;
-    max-height: 120px;
-  }
-
-  .meal-icon {
-    position: absolute;
-    top: -.7em;
-    transform: translateX(-15%);
-    padding: .2rem .2rem .2rem;
-    background-color: #f8f9fa;
-  }
-
-  .box-title-small {
-    font-size: 12px;
-    height: fit-content;
-    margin-bottom: 2px;
-  }
-
-  .box-body-txt {
-    font-size: 16px;
-    margin-bottom: 0;
+  .fa-pen,
+  .fa-trash-can {
+    padding: 5px;
+    color: #b6b6b6;
+    &:hover { color: #0d6efd; }
   }
 }
+
+
+/* REQUIREMENT BOXES */
 
 .requirements-list {
   display: flex;
-  justify-content: flex-start;
   gap: 1.5rem;
+  flex-wrap: nowrap;
+}
+
+.requirement-box {
+  position: relative;
+  border: 1px solid #e6e6e6;
+  border-radius: 6px;
+  padding: 12px;
+  flex: 1 1 0;
+  min-width: 0;
+  max-height: 120px;
+}
+
+.meal-requirements {
+  margin-top: 12px;
+}
+
+.meal-icon {
+  position: absolute;
+  top: -0.3rem;
+  left: 12px;
+  padding: 0.2rem;
+  background-color: #fff;
+}
+
+.box-title-small {
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.box-body-txt {
+  font-size: 16px;
+  margin-top: 0.7rem;
+  margin-bottom: 0;
+}
+
+/* 2-line clamp utility */
+.clamp-2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-clamp: 2;
+}
+
+
+/* CONSIDERATIONS */
+
+.considerations {
+  p {
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 0;
+  }
+
+  .considerations-description {
+    font-size: 14px;
+    font-weight: 100;
+  }
 }
 
 .view-details-link {
   a {
     text-decoration: none;
+    font-size: medium;
   }
-// Page-specific styles for meal plans
-// Using variables from config/_colors.scss for consistency
-
-.meal-plan-card {
-  border-radius: 12px;
-  background: $light-gray;
-  transition: all 0.3s ease;
-  
-  &:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1) !important;
-  }
-}
-
-// Enhanced form styling
-.form-group-wrapper {
-  position: relative;
-  
-  .input-icon-wrapper {
-    position: relative;
-    
-    .input-icon {
-      position: absolute;
-      left: 15px;
-      // Position at the middle of the input field
-      // Bootstrap form-control height is typically 38px, label is ~24px, margin is 8px
-      // So input starts at ~32px, center is at ~32px + 19px = 51px
-      top: 51px;
-      color: $gray;
-      opacity: 0.5;
-      transition: all 0.3s ease;
-      z-index: 10;
-      pointer-events: none;
-      // Center the icon itself vertically (moves it up by half its own height)
-      transform: translateY(-50%);
-      line-height: 1;
-      display: inline-flex;
-      align-items: center;
-      
-      &.textarea-icon {
-        // For textarea, position it at the top to align with first line of text
-        // Label (~24px) + margin (8px) + textarea padding-top (12px) = ~44px
-        top: 44px;
-        transform: translateY(0);
-      }
-    }
-    
-    // Adjust input padding when icon is present
-    .form-control-enhanced {
-      padding-left: 45px;
-      border: 2px solid rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
-      transition: all 0.3s ease;
-      font-size: 1rem;
-      
-      &:focus {
-        border-color: $primary;
-        box-shadow: 0 0 0 0.2rem rgba($primary, 0.15);
-        outline: none;
-      }
-      
-      &:hover:not(:focus) {
-        border-color: rgba(0, 0, 0, 0.2);
-      }
-    }
-    
-    // Textarea specific styling
-    textarea.form-control-enhanced {
-      padding-top: 12px;
-      padding-left: 45px;
-      resize: vertical;
-      min-height: 100px;
-    }
-    
-    // Label styling
-    .form-label-enhanced {
-      font-weight: 600;
-      color: $gray;
-      margin-bottom: 8px;
-      font-size: 0.95rem;
-    }
-    
-    // When input is focused, update icon color using :has() selector
-    &:has(.form-control-enhanced:focus) .input-icon {
-      color: $primary;
-      opacity: 1;
-    }
-  }
-}
-
-// Button area styling
-.border-top {
-  border-color: rgba(0, 0, 0, 0.1) !important;
 }
