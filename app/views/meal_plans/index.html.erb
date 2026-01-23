@@ -38,70 +38,78 @@
     <div class="d-flex justify-content-between align-items-center mb-4">
       <h2 class="mb-0">Meal Plans</h2>
 
-      <%= link_to new_user_meal_plan_path(current_user.id), class: "btn btn-outline-primary" do %>
+      <%= link_to new_user_meal_plan_path(current_user.id), class: "btn btn-2" do %>
         <i class="fa-solid fa-plus"></i> New plan
       <% end %>
     </div>
 
-    <% @meal_plans.each do |plan| %>
-      <div class="mb-4">
-        <div class="card border-0 shadow-sm p-4 meal-plan-card">
+    <% if @meal_plans.any? %>
+       <% @meal_plans.each do |plan| %>
+        <div class="mb-4">
+          <div class="card border-0 shadow-sm p-4 meal-plan-card">
 
-          <div class="card-header-actions mb-3">
-            <h4 class="fw-bold mb-0 meal-plan-title"><%= plan.plan_title.capitalize %></h4>
+            <div class="card-header-actions mb-3">
+              <h4 class="fw-bold mb-0 meal-plan-title"><%= plan.plan_title.capitalize %></h4>
 
-            <div class="card-actions">
+              <div class="card-actions">
+                <%= link_to user_meal_plan_chat_path(current_user.id, plan) do %>
+                  <i class="fa-solid fa-pen fa-sm me-2"></i>
+                <% end %>
+
+                <%= link_to user_meal_plan_path(current_user.id, plan),
+                  data: { turbo_method: :delete , turbo_confirm: "Delete this meal plan? All chats will be lost." } do %>
+                  <i class="fa-solid fa-trash-can fa-sm"></i>
+                <% end %>
+              </div>
+            </div>
+
+            <div class="meal-requirements mb-3">
+              <ul class="list-unstyled requirements-list mb-0">
+
+                <li class="requirement-box">
+                  <i class="fa-solid fa-medal fa-lg meal-icon-card"></i>
+                  <p class="box-title-small">Plan goal</p>
+                  <p class="box-body-txt clamp-2"><%= plan.goal.capitalize %></p>
+                </li>
+
+                <li class="requirement-box">
+                  <i class="fa-solid fa-cookie-bite fa-lg meal-icon-card"></i>
+                  <p class="box-title-small">Diet type</p>
+                  <p class="box-body-txt clamp-2"><%= plan.diet.capitalize %></p>
+                </li>
+
+                <li class="requirement-box">
+                  <i class="fa-solid fa-utensils fa-lg meal-icon-card"></i>
+                  <p class="box-title-small">Meals required</p>
+                  <p class="box-body-txt clamp-2"><%= plan.meals_required.capitalize %></p>
+                </li>
+
+              </ul>
+            </div>
+
+            <div class="considerations mb-3">
+              <p class="fw-bold mb-1">Other considerations</p>
+              <p class="considerations-description clamp-2">
+                <%= plan.additional_preferences.capitalize.presence || "None" %>
+              </p>
+            </div>
+
+            <div class="d-flex justify-content-end view-details-link">
               <%= link_to user_meal_plan_chat_path(current_user.id, plan) do %>
-                <i class="fa-solid fa-pen fa-sm me-2"></i>
-              <% end %>
-
-              <%= link_to user_meal_plan_path(current_user.id, plan),
-                data: { turbo_method: :delete , turbo_confirm: "Delete this meal plan? All chats will be lost." } do %>
-                <i class="fa-solid fa-trash-can fa-sm"></i>
+                View <i class="fa-solid fa-chevron-right"></i>
               <% end %>
             </div>
+
           </div>
-
-          <div class="meal-requirements mb-3">
-            <ul class="list-unstyled requirements-list mb-0">
-
-              <li class="requirement-box">
-                <i class="fa-solid fa-medal fa-lg meal-icon-card"></i>
-                <p class="box-title-small">Plan goal</p>
-                <p class="box-body-txt clamp-2"><%= plan.goal.capitalize %></p>
-              </li>
-
-              <li class="requirement-box">
-                <i class="fa-solid fa-cookie-bite fa-lg meal-icon-card"></i>
-                <p class="box-title-small">Diet type</p>
-                <p class="box-body-txt clamp-2"><%= plan.diet.capitalize %></p>
-              </li>
-
-              <li class="requirement-box">
-                <i class="fa-solid fa-utensils fa-lg meal-icon-card"></i>
-                <p class="box-title-small">Meals required</p>
-                <p class="box-body-txt clamp-2"><%= plan.meals_required.capitalize %></p>
-              </li>
-
-            </ul>
-          </div>
-
-          <div class="considerations mb-3">
-            <p class="fw-bold mb-1">Other considerations</p>
-            <p class="considerations-description clamp-2">
-              <%= plan.additional_preferences.capitalize.presence || "None" %>
-            </p>
-          </div>
-
-          <div class="d-flex justify-content-end view-details-link">
-            <%= link_to user_meal_plan_chat_path(current_user.id, plan) do %>
-              View <i class="fa-solid fa-chevron-right"></i>
-            <% end %>
-          </div>
-
         </div>
+      <% end %>
+    <% else %>
+      <div class="no-meals">
+          <div class="card border-0 shadow-sm meal-plan-card">
+            <p class="no-meal-icon"><i class="fa-solid fa-utensils"></i></p>
+            <p> Create your first meal plan <p>
+          </div>
       </div>
     <% end %>
-
   </div>
 </div>
