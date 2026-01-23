@@ -13,18 +13,18 @@
   <body>
      <%= link_to "Skip to main content", "#main-content", class: "visually-hidden-focusable" %>
     <header>
-      <%= render "shared/navbar" %> <!-- 👈 Add this for navbar -->
+      <%= render "shared/navbar" %>
     </header>
 
-   <main id="main-content">
-      <% if content_for?(:full_width) %>
+  <main id="main-content">
+    <% if content_for?(:full_width) %>
+      <%= yield :full_width %>
+    <% else %>
+      <div class="container">
         <%= yield %>
-      <% else %>
-        <div class="container">
-          <%= yield %>
-        </div>
-      <% end %>
-    </main>
+      </div>
+    <% end %>
+  </main>
     <%= render "shared/flashes" %>
   </body>
 </html>
