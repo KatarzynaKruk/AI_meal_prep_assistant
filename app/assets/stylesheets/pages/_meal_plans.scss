@@ -30,7 +30,7 @@
     padding: 5px;
     color: #b6b6b6;
 
-    &:hover { color: #0d6efd; }
+    &:hover { color: $green; }
   }
 
 
@@ -70,6 +70,24 @@
 
 /* MEAL PLAN CARD */
 
+
+.no-meals {
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+
+  p {
+    margin-bottom: 30px;
+  }
+}
+
+.no-meal-icon {
+  font-size: 40px;
+  color: #b6b6b6;
+  padding-top: 50px;
+  padding-bottom: 0px;
+}
+
 .meal-plan-card {
   border-radius: 12px;
   background: #f8f9fa;
@@ -101,7 +119,7 @@
   .fa-trash-can {
     padding: 5px;
     color: #b6b6b6;
-    &:hover { color: #0d6efd; }
+    &:hover { color: $green }
   }
 }
 
@@ -134,6 +152,7 @@
   left: 12px;
   padding: 0.2rem;
   background-color: #fff;
+  color: #434343
 }
 
 .box-title-small {
