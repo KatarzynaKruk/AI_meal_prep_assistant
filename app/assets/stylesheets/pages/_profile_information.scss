@@ -4,9 +4,10 @@ html, body {
 }
 
 .profile-hero {
-  width: 100%;
+  width: 100vw;
   min-height: 100vh;
-  margin: 0;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
   padding: 0;
   display: block;
   background-image: url("AI_Meal_Prep_Log_In.png");
